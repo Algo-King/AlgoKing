@@ -10,6 +10,8 @@ const App = () => (
     <Fragment>
       <Route exact path="/" component={Login} />
       <Route exact path="/register" component={Home} />
+      <Route exact path="/Leaderboard" component={Home} />
+      <Route exact path="/Register" component={Home} />
     </Fragment>
   </Router>
 );
