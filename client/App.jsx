@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from "./layout/Home";
-import Leaderboard from "./layout/Leaderboard";
-import Login from "./layout/Login";
-import Register from "./layout/Register";
+import Home from "./layout/Home.jsx";
+import Leaderboard from "./layout/Leaderboard.jsx";
+import Login from "./layout/Login.jsx";
+import Register from "./layout/Register.jsx";
 
 const App = () => (
   <Router>
