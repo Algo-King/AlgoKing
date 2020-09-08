@@ -9,10 +9,11 @@ const App = () => (
   <Router>
     <Fragment>
       <Route exact path="/" component={Login} />
-      <Route exact path="/register" component={Home} />
-      <Route exact path="/Leaderboard" component={Home} />
-      <Route exact path="/Register" component={Home} />
+      <Route exact path="/register" component={Register} />
+      <Route exact path="/leaderboard" component={Leaderboard} />
+      <Route exact path="/home" component={Home} />
     </Fragment>
   </Router>
 );
+
 export default App;
