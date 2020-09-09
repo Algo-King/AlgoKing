@@ -2,8 +2,6 @@ import React from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 import { Link, Redirect } from "react-router-dom";
-// react component for creating beautiful carousel
-import Carousel from "react-slick";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
@@ -15,6 +13,7 @@ import GridContainer from "../../material-ui/GridContainer.js";
 import GridItem from "../../material-ui/GridItem.js";
 
 import headersStyle from "../../../assets/jss/material-kit-pro-react/views/sectionsSections/headersStyle";
+
 import office2 from "../../../assets/img/examples/office2.jpg";
 
 const useStyles = makeStyles(headersStyle);
@@ -24,6 +23,7 @@ export default function SectionHeaders({ ...rest }) {
   return (
     // we've set the className to cd-section so we can make smooth scroll to it
     <div className="cd-section" {...rest}>
+      {/* <div className={classes.sectionBlank} id="blanksection" /> */}
       {/* HEADER 2 START */}
       <div>
         <Header
