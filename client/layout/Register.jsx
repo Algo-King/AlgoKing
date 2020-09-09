@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 
@@ -69,6 +69,7 @@ const Register = () => {
     email: "",
     password: "",
     password2: "",
+    isAuthenticated: false,
   });
 
   const { email, password, password2, name } = formData;
@@ -102,14 +103,18 @@ const Register = () => {
         console.log(res.data);
         // setting the token in local storage
         localStorage.setItem("token", res.data.token);
-        console.log(localStorage);
+        console.log(localStorage.token);
+
+        return <Redirect to="/home" />;
       } catch (err) {
         console.error(err.response);
       }
     }
   };
 
+  // we just need to have a rerender
   if (localStorage.token) {
+    formData.isAuthenticated = true;
     return <Redirect to="/home" />;
   }
 
