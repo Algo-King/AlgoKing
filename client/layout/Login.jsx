@@ -79,6 +79,10 @@ const Login = () => {
     return <Redirect to="/home" />;
   }
 
+  if (localStorage.token) {
+    return <Redirect to="/home" />;
+  }
+
   // create onChange function
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
