@@ -1,6 +1,7 @@
 import React from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
+import { Link, Redirect } from "react-router-dom";
 // react component for creating beautiful carousel
 import Carousel from "react-slick";
 // @material-ui/core components
@@ -69,6 +70,16 @@ export default function SectionHeaders({ ...rest }) {
                     onClick={(e) => e.preventDefault()}
                     color="transparent"
                   >
+                    Leaderboard
+                  </Button>
+                </ListItem>
+                <ListItem className={classes.listItem}>
+                  <Button
+                    href="#pablo"
+                    className={classes.navLink}
+                    onClick={(e) => e.preventDefault()}
+                    color="transparent"
+                  >
                     Logout
                   </Button>
                 </ListItem>
@@ -115,7 +126,9 @@ export default function SectionHeaders({ ...rest }) {
                   )}
                 >
                   <Button block color="facebook" className={classes.button}>
-                    Start Now
+                    <Link to="/question" style={{ color: "white" }}>
+                      {"Start Now"}
+                    </Link>
                   </Button>
                 </GridItem>
               </GridItem>

@@ -33,7 +33,7 @@ export default function Home() {
     <div>
       <div className={classes.main}>
         <SectionHeaders id="headers" />
-        {/* <SectionBlogs id="blogs" /> */}
+        <SectionBlogs id="blogs" />
         {/* <SectionFeatures id="features" />
         <SectionBlogs id="blogs" />
         <SectionTeams id="teams" />
