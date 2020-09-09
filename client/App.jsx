@@ -4,11 +4,13 @@ import Question from "./layout/Question.jsx";
 import Leaderboard from "./layout/Leaderboard.jsx";
 import Login from "./layout/Login.jsx";
 import Register from "./layout/Register.jsx";
-import Home from "./layout/Home.jsx";
 import NavBar from "./layout/NavBar.jsx";
 import './assets/styles.scss';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
+import Home from "./layout/home/Home.jsx";
+
+import "./assets/scss/material-kit-pro-react.scss";
 
 const App = () => (
   
