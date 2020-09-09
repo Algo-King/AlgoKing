@@ -2,8 +2,10 @@ const express = require("express");
 const path = require("path");
 const PORT = 5000;
 const connectDB = require("./config/db");
+const cors = require("cors");
 
 const app = express();
+app.use(cors());
 
 // Connect Database - in the config folder
 connectDB();

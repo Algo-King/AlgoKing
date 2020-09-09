@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 // Material UI imports
 import Avatar from "@material-ui/core/Avatar";
@@ -78,7 +79,31 @@ const Register = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log("success");
+    if (password !== password2) {
+      console.log("Passwords do not match");
+    } else {
+      const newUser = {
+        name,
+        email,
+        password,
+      };
+
+      try {
+        const config = {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        };
+        const body = JSON.stringify(newUser);
+        const res = await axios.post(
+          "http://localhost:5000/api/users",
+          body,
+          config
+        );
+      } catch (err) {
+        console.error(err.response);
+      }
+    }
   };
 
   return (
@@ -148,10 +173,10 @@ const Register = () => {
               margin="normal"
               required
               fullWidth
-              name="password"
-              label="Password"
+              name="password2"
+              label="Password2"
               type="password"
-              id="password"
+              id="password2"
               // autoComplete="current-password"
               value={password2}
               onChange={(e) => {
