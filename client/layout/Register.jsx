@@ -74,7 +74,7 @@ const Register = () => {
 
   const { email, password, password2, name, isAuthenticated } = formData;
 
-  // we just need to have a rerender
+  // check if is Authenticated
   if (isAuthenticated) {
     return <Redirect to="/home" />;
   }

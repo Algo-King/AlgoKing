@@ -74,6 +74,11 @@ const Login = () => {
 
   const { email, password, isAuthenticated } = formData;
 
+  // check if is authenticated
+  if (isAuthenticated) {
+    return <Redirect to="/home" />;
+  }
+
   // create onChange function
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -97,10 +102,6 @@ const Login = () => {
       console.log("error");
     }
   };
-  // check if is authenticated
-  if (isAuthenticated) {
-    return <Redirect to="/home" />;
-  }
 
   return (
     <Grid container component="main" className={classes.root}>
