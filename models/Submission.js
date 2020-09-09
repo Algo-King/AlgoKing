@@ -8,11 +8,11 @@ const submissionSchema = new mongoose.Schema({
     type: String,
   },
   time: {
-    type: number,
+    type: Number,
     required: true,
   },
   score: {
-    type: number,
+    type: Number,
   },
   date: {
     type: Date,
