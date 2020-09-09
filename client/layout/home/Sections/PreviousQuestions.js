@@ -12,6 +12,10 @@ const useStyles = makeStyles(blogsStyle);
 
 export default function SectionBlogs({ ...rest }) {
   const classes = useStyles();
+
+  // setup react hook here,
+
+  // use effect -- make axios request to the old challenges collection
   return (
     <div className="cd-section" {...rest}>
       {/* Blogs 3 START */}
