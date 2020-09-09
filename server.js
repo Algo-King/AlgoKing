@@ -8,6 +8,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.resolve(__dirname, "client")));
 
+app.get("/", (req, res) => res.send("API Running")); // test route
+
 // Error Handlers
 app.use((err, req, res, next) => {
   const defaultErr = {

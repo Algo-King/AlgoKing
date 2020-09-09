@@ -8,7 +8,7 @@
     "webpack-dev-server": "webpack-dev-server",
     "client": "webpack-dev-server --mode=development",
     "prod": "webpack --mode=production",
-    "dev": "concurrently \"cross-env  webpack-dev-server --mode=development --open --hot --inline --progress --colors --watch --content-base ./ \" \"nodemon ./server/server.js\""
+    "dev": "concurrently \"cross-env  webpack-dev-server --mode=development --open --hot --inline --progress --colors --watch --content-base ./ \" \"nodemon ./server.js\""
   },
   "keywords": [],
   "author": "",
