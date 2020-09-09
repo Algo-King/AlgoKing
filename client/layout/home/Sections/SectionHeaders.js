@@ -19,7 +19,6 @@ import office2 from "../../../assets/img/examples/office2.jpg";
 const useStyles = makeStyles(headersStyle);
 
 export default function SectionHeaders(props, { ...rest }) {
-  console.log("name in ", props.name);
   const classes = useStyles();
   return (
     // we've set the className to cd-section so we can make smooth scroll to it
