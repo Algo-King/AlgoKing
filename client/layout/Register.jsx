@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 
 // Material UI imports
@@ -87,7 +87,6 @@ const Register = () => {
         email,
         password,
       };
-
       try {
         const config = {
           headers: {
@@ -100,11 +99,19 @@ const Register = () => {
           body,
           config
         );
+        console.log(res.data);
+        // setting the token in local storage
+        localStorage.setItem("token", res.data.token);
+        console.log(localStorage);
       } catch (err) {
         console.error(err.response);
       }
     }
   };
+
+  if (localStorage.token) {
+    return <Redirect to="/home" />;
+  }
 
   return (
     <Grid container component="main" className={classes.root}>
