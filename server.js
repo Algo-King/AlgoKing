@@ -22,6 +22,7 @@ app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
 // define a route to the leaderboard
 app.use("/api/challenges", require("./routes/api/challenges"));
+app.use("/api/oldChallenges", require("./routes/api/oldChallenges"));
 
 // Error Handlers
 app.use((err, req, res, next) => {
