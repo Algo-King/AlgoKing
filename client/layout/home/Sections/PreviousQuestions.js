@@ -34,10 +34,10 @@ export default function SectionBlogs({ ...rest }) {
 	};
 	console.log(typeof oldQuestion[0].date);
 	const sortedArr = oldQuestion.sort(function (a, b) {
-		if (a.date > b.date) {
+		if (a.date < b.date) {
 			return 1;
 		}
-		if (a.date < b.date) {
+		if (a.date > b.date) {
 			return -1;
 		}
 		// a must be equal to b
