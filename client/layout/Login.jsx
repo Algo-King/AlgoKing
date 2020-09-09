@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 // Material UI imports
 import Avatar from "@material-ui/core/Avatar";
@@ -78,8 +79,27 @@ const Login = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log("success");
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const body = JSON.stringify({ email, password });
+    // set the user login, axios request and check data
+    try {
+      const res = await axios.post("/api/auth", body, config);
+      localStorage.setItem("token", res.data.token);
+      console.log(res);
+    } catch {
+      console.log("error");
+    }
   };
+
+  if (localStorage.token) {
+    formData.isAuthenticated = true;
+    return <Redirect to="/home" />;
+  }
 
   return (
     <Grid container component="main" className={classes.root}>
