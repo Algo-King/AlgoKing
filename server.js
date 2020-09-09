@@ -16,6 +16,7 @@ app.use(express.static(path.resolve(__dirname, "client")));
 app.get("/", (req, res) => res.send("API Running")); // test route
 
 // ! Define Routes
+app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
 
 // Error Handlers
