@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node app.jsx",
     "webpack-dev-server": "webpack-dev-server",
     "client": "webpack-dev-server --mode=development",
     "prod": "webpack --mode=production",
