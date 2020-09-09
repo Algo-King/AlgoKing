@@ -1,17 +1,26 @@
 import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from "./layout/Home.jsx";
+import Question from "./layout/Question.jsx";
 import Leaderboard from "./layout/Leaderboard.jsx";
 import Login from "./layout/Login.jsx";
 import Register from "./layout/Register.jsx";
+import Home from "./layout/Home.jsx";
+import NavBar from "./layout/NavBar.jsx";
+import './assets/styles.scss';
 
 const App = () => (
+  
   <Router>
+
     <Fragment>
       <Route exact path="/" component={Login} />
       <Route exact path="/register" component={Register} />
+    </Fragment>
+    <Fragment>
+      <NavBar />
       <Route exact path="/leaderboard" component={Leaderboard} />
       <Route exact path="/home" component={Home} />
+      <Route exact path="/question" component={Question} />
     </Fragment>
   </Router>
 );

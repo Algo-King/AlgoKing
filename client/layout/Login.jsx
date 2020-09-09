@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import axios from "axios";
 
 // Material UI imports
 import Avatar from "@material-ui/core/Avatar";
@@ -68,9 +69,19 @@ const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+    isAuthenticated: false,
   });
 
-  const { email, password } = formData;
+  const { email, password, isAuthenticated } = formData;
+
+  // check if is authenticated
+  if (isAuthenticated) {
+    return <Redirect to="/home" />;
+  }
+
+  if (localStorage.token) {
+    return <Redirect to="/home" />;
+  }
 
   // create onChange function
   const onChange = (e) =>
@@ -78,7 +89,22 @@ const Login = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log("success");
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const body = JSON.stringify({ email, password });
+    // set the user login, axios request and check data
+    try {
+      const res = await axios.post("/api/auth", body, config);
+      localStorage.setItem("token", res.data.token);
+      setFormData({ isAuthenticated: true }); // setting to authenticated
+      console.log(res);
+    } catch {
+      console.log("error");
+    }
   };
 
   return (
