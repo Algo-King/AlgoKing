@@ -4,11 +4,15 @@ const challengeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  Problem: {
+  problem: {
     type: String,
     required: true,
   },
-  Example1: {
+  example1: {
+    input: { type: String },
+    output: { type: String },
+  },
+  example2: {
     input: { type: String },
     output: { type: String },
   },
