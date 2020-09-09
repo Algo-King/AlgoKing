@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, Redirect } from "react-router-dom";
+import axios from "axios";
 
 // Material UI imports
 import Avatar from "@material-ui/core/Avatar";
@@ -15,8 +16,6 @@ import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-
-const regeneratorRuntime = require("regenerator-runtime");
 
 function Copyright() {
   return (
@@ -70,6 +69,7 @@ const Register = () => {
     email: "",
     password: "",
     password2: "",
+    isAuthenticated: false,
   });
 
   const { email, password, password2, name } = formData;
@@ -80,8 +80,43 @@ const Register = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log("success");
+    if (password !== password2) {
+      console.log("Passwords do not match");
+    } else {
+      const newUser = {
+        name,
+        email,
+        password,
+      };
+      try {
+        const config = {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        };
+        const body = JSON.stringify(newUser);
+        const res = await axios.post(
+          "http://localhost:5000/api/users",
+          body,
+          config
+        );
+        console.log(res.data);
+        // setting the token in local storage
+        localStorage.setItem("token", res.data.token);
+        console.log(localStorage.token);
+
+        return <Redirect to="/home" />;
+      } catch (err) {
+        console.error(err.response);
+      }
+    }
   };
+
+  // we just need to have a rerender
+  if (localStorage.token) {
+    formData.isAuthenticated = true;
+    return <Redirect to="/home" />;
+  }
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -150,10 +185,10 @@ const Register = () => {
               margin="normal"
               required
               fullWidth
-              name="password"
-              label="Password"
+              name="password2"
+              label="Confirm Password"
               type="password"
-              id="password"
+              id="password2"
               // autoComplete="current-password"
               value={password2}
               onChange={(e) => {

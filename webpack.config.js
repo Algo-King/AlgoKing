@@ -16,11 +16,11 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         options: {
-          presets: ['@babel/preset-env', '@babel/preset-react'],
-          plugins: ['@babel/transform-runtime']
-        }
+          presets: ["@babel/preset-env", "@babel/preset-react"],
+          plugins: ["@babel/transform-runtime"],
+        },
       },
       {
         test: /\.css$/,
@@ -35,6 +35,15 @@ module.exports = {
         use: "file-loader",
       },
     ],
+  },
+  devServer: {
+    proxy: {
+      "/api": "http://localhost:5000/", // we must specify that it is going to 3000, where we can make hte requests
+    },
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebPackPlugin({
