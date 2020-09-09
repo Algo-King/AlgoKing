@@ -72,7 +72,12 @@ const Register = () => {
     isAuthenticated: false,
   });
 
-  const { email, password, password2, name } = formData;
+  const { email, password, password2, name, isAuthenticated } = formData;
+
+  // we just need to have a rerender
+  if (isAuthenticated) {
+    return <Redirect to="/home" />;
+  }
 
   // create onChange function
   const onChange = (e) =>
@@ -102,21 +107,16 @@ const Register = () => {
         );
         console.log(res.data);
         // setting the token in local storage
+        setFormData({
+          isAuthenticated: true,
+        });
         localStorage.setItem("token", res.data.token);
-        console.log(localStorage.token);
-
         return <Redirect to="/home" />;
       } catch (err) {
         console.error(err.response);
       }
     }
   };
-
-  // we just need to have a rerender
-  if (localStorage.token) {
-    formData.isAuthenticated = true;
-    return <Redirect to="/home" />;
-  }
 
   return (
     <Grid container component="main" className={classes.root}>

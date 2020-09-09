@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 
 // Material UI imports
@@ -69,9 +69,10 @@ const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+    isAuthenticated: false,
   });
 
-  const { email, password } = formData;
+  const { email, password, isAuthenticated } = formData;
 
   // create onChange function
   const onChange = (e) =>
@@ -90,14 +91,14 @@ const Login = () => {
     try {
       const res = await axios.post("/api/auth", body, config);
       localStorage.setItem("token", res.data.token);
+      setFormData({ isAuthenticated: true }); // setting to authenticated
       console.log(res);
     } catch {
       console.log("error");
     }
   };
-
-  if (localStorage.token) {
-    formData.isAuthenticated = true;
+  // check if is authenticated
+  if (isAuthenticated) {
     return <Redirect to="/home" />;
   }
 
