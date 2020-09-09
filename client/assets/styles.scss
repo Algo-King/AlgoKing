@@ -1,0 +1,40 @@
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 4em;
+  background-color: aqua;
+}
+.questionBody {
+  display: flex;
+  justify-content: space-between;
+  .top {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 4em;
+    background-color: purple;
+    .questionDate {
+      color: grey;
+    }
+  }
+ .prompt {
+    display: flex;
+    min-width: 200px;
+    width: 25%;
+    height: 100%;
+    background-color: red;
+  }
+  .codePlacement {
+    min-width: 300px;
+    width: 50%;
+    height: 100%;
+    background-color: yellow;
+  }
+  .results {
+    min-width: 200px;
+    width: 25%;
+    height: 100%;
+    background-color: green;
+  }
+}
