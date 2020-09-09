@@ -8,8 +8,7 @@
     "webpack-dev-server": "webpack-dev-server",
     "client": "webpack-dev-server --mode=development",
     "prod": "webpack --mode=production",
-    "dev": "concurrently \"cross-env  webpack-dev-server --mode=development --open --hot --inline --progress --colors --watch --content-base ./ \" \"nodemon ./server.js\"",
-    "heroku-postbuild":      "NPM_CONFIG_PRODUCTION=false npm install --prefix client        && npm run build --prefix client"  },
+    "dev": "concurrently \"cross-env  webpack-dev-server --mode=development --open --hot --inline --progress --colors --watch --content-base ./ \" \"nodemon ./server.js\""
   },
   "keywords": [],
   "author": "",
