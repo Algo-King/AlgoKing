@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Home = () => {
+const Question = () => {
   return (
     <div>
-      Home Page
+      Question Page
       <Link
         to="/leaderboard"
         style={{ textDecoration: "none" }}
@@ -12,11 +12,11 @@ const Home = () => {
       >
         {"Go to leaderboard"}
       </Link>
-      <Link to="/question" style={{ textDecoration: "none" }} variant="body2">
-        {"Go to Question"}
+      <Link to="/home" style={{ textDecoration: "none" }} variant="body2">
+        {"Go to home"}
       </Link>
     </div>
   );
 };
 
-export default Home;
+export default Question;

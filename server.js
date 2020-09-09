@@ -20,6 +20,9 @@ app.get("/", (req, res) => res.send("API Running")); // test route
 // ! Define Routes
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
+app.use("/api/challenges", require("./routes/api/challenges"));
+app.use("/api/oldChallenges", require("./routes/api/oldChallenges"));
+app.use("/api/submissions", require("./routes/api/submissions"));
 
 // Error Handlers
 app.use((err, req, res, next) => {
