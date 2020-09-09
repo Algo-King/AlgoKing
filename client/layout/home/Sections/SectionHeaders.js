@@ -18,7 +18,8 @@ import office2 from "../../../assets/img/examples/office2.jpg";
 
 const useStyles = makeStyles(headersStyle);
 
-export default function SectionHeaders({ ...rest }) {
+export default function SectionHeaders(props, { ...rest }) {
+  console.log("name in ", props.name);
   const classes = useStyles();
   return (
     // we've set the className to cd-section so we can make smooth scroll to it
@@ -83,7 +84,9 @@ export default function SectionHeaders({ ...rest }) {
                   classes.textCenter
                 )}
               >
-                <h1 className={classes.title}>BEGIN YOUR DAILY ALGO</h1>
+                <h1 className={classes.title}>
+                  Hello {props.name} Begin Your Daily Algo
+                </h1>
                 <h4>
                   Do your Daily Algo - Put a switch here that checks if the user
                   did their daily algo
