@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "concurrently \"cross-env  webpack-dev-server --mode=development --open --hot --inline --progress --colors --watch --content-base ./ \" \"nodemon ./server.js\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack-dev-server": "webpack-dev-server",
     "client": "webpack-dev-server --mode=development",
