@@ -1,20 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import CodeWindow from "./questionComps/CodeWindow.jsx";
+import Output from "./questionComps/Output.jsx";
+import Prompt from "./questionComps/Prompt.jsx";
+import Results from "./questionComps/Results.jsx";
+import Top from "./questionComps/Top.jsx";
 
 const Question = () => {
   return (
     <div>
-      Question Page
-      <Link
-        to="/leaderboard"
-        style={{ textDecoration: "none" }}
-        variant="body2"
-      >
-        {"Go to leaderboard"}
-      </Link>
-      <Link to="/home" style={{ textDecoration: "none" }} variant="body2">
-        {"Go to home"}
-      </Link>
+      <Top className="top"/>
+      <div className="questionBody">
+        <Prompt className="prompt"/>
+        <div className="codePlacement">
+          <CodeWindow />
+          <Output />
+        </div>
+        <Results className="results"/>
+      </div>
     </div>
   );
 };

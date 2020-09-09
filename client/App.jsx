@@ -7,6 +7,8 @@ import Register from "./layout/Register.jsx";
 import Home from "./layout/Home.jsx";
 import NavBar from "./layout/NavBar.jsx";
 import './assets/styles.scss';
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/theme/material.css';
 
 const App = () => (
   
