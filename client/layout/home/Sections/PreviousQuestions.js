@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+// import axios
 import axios from 'axios';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
@@ -83,52 +83,6 @@ export default function SectionBlogs({ ...rest }) {
 							})}
 						</GridItem>
 					</GridContainer>
-					{/* <Card plain blog className={classes.card}>
-								<GridContainer>
-									<GridItem xs={12} sm={12} md={12}>
-										<Info>
-											<h6 className={classes.cardCategory}>Arrays</h6>
-										</Info>
-										<h3 className={classes.cardTitle}>
-											<a href="#pablo" onClick={(e) => e.preventDefault()}>
-												TwoSum
-											</a>
-										</h3>
-										<p className={classes.description}>
-											Like so many organizations these days, Autodesk is a
-											company in transition. It was until recently a traditional
-											boxed software company selling licenses. Today, it’s
-											moving to a subscription model. Yet its own business model
-											disruption is only part of the story — and…
-										</p>
-										<b>9/3/2020</b>
-									</GridItem>
-								</GridContainer>
-							</Card>
-							<Card plain blog className={classes.card}>
-								<GridContainer>
-									<GridItem xs={12} sm={12} md={12}>
-										<Info>
-											<h6 className={classes.cardCategory}>Arrays</h6>
-										</Info>
-										<h3 className={classes.cardTitle}>
-											<a href="#pablo" onClick={(e) => e.preventDefault()}>
-												TwoSum
-											</a>
-										</h3>
-										<p className={classes.description}>
-											Like so many organizations these days, Autodesk is a
-											company in transition. It was until recently a traditional
-											boxed software company selling licenses. Today, it’s
-											moving to a subscription model. Yet its own business model
-											disruption is only part of the story — and…
-										</p>
-										<b>9/3/2020</b>
-									</GridItem>
-								</GridContainer>
-							</Card>
-						</GridItem>
-					</GridContainer> */}
 				</div>
 			</div>
 			{/* Blogs 3 END */}
