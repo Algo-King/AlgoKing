@@ -1,7 +1,12 @@
 const express = require("express");
 const path = require("path");
-const app = express();
 const PORT = 5000;
+const connectDB = require("./config/db");
+
+const app = express();
+
+// Connect Database - in the config folder
+connectDB();
 
 // parse request body
 app.use(express.json());
