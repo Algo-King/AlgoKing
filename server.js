@@ -15,6 +15,9 @@ app.use(express.static(path.resolve(__dirname, "client")));
 
 app.get("/", (req, res) => res.send("API Running")); // test route
 
+// ! Define Routes
+app.use("/api/auth", require("./routes/api/auth"));
+
 // Error Handlers
 app.use((err, req, res, next) => {
   const defaultErr = {
