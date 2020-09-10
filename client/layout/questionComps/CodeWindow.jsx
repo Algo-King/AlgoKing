@@ -35,9 +35,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   paper: {
+    height: "50vh",
     padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
   },
 }));
 
@@ -58,7 +57,7 @@ const CodeWindow = (props) => {
     });
   };
 
-  const handleCodeSubmit = (e) => {
+  const handleCodeRun = (e) => {
     e.preventDefault();
     let outputData = eval("(" + questionData.input + ")")();
     console.log("this is output ", outputData);
@@ -83,13 +82,17 @@ const CodeWindow = (props) => {
         Reset
       </Button>
       {/* We need to figure this out */}
-      <Button variant="contained" color="secondary">
+      <Button variant="contained" color="secondary" onClick={handleCodeRun}>
         Run
       </Button>
-      <Button variant="contained" color="primary" onClick={handleCodeSubmit}>
+      <Button variant="contained" color="primary" onClick={handleCodeRun}>
         Submit
       </Button>
-
+      <Grid item xs={12}>
+        <Paper className={classes.paper}>
+          Put the output data here: {questionData.output}
+        </Paper>
+      </Grid>
       {/* create a box for vertical */}
     </div>
   );
