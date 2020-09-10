@@ -11,38 +11,42 @@ require("codemirror/theme/monokai.css");
 require("codemirror/theme/midnight.css");
 require("codemirror/theme/lesser-dark.css");
 require("codemirror/theme/solarized.css");
+require("codemirror/addon/edit/closebrackets");
 
 // Codemirror Component
 const CodeMirror = require("react-codemirror");
 const options = {
   lineNumbers: true,
+  autoCloseBrackets: true,
   mode: "sql",
   theme: "lesser-dark",
 };
 
-const CodeWindow = () => {
-  const [output, setOutput] = useState({
-    codeString: "",
-    show: false,
-  });
+const CodeWindow = (props) => {
+  const { setQuestionData, questionData } = props;
 
   const updateCode = (e) => {
-    setOutput({
-      codeString: e,
+    setQuestionData({
+      input: e,
     });
   };
 
   const handleCodeSubmit = (e) => {
     e.preventDefault();
-    eval(output.codeString);
+
+    // var customJSfromServer = questionData.input;
+    // var evalValue = new Function(customJSfromServer)();
+    // console.log(evalValue); // should be "6";
+    let outputData = eval("(" + questionData.input + ")")();
+    console.log("this is output ", outputData);
+
+    setQuestionData({
+      output: outputData,
+    });
+    // eval(questionData.input);
   };
 
-  // constructor(props) {
-  //   super(props);
-  //   this.handleCodeSubmit = this.handleCodeSubmit.bind(this);
-  //   this.updateCode = this.updateCode.bind(this);
-  // }
-
+  console.log(questionData);
   return (
     <div>
       <form onSubmit={handleCodeSubmit}>
