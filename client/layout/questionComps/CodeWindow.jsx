@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
 const CodeWindow = (props) => {
   const classes = useStyles();
   const { setQuestionData, questionData, time, name } = props;
+  const [redirection, setRedirection] = useState(false);
   // console.log('name', name);
   const [codeWindowData, setCodeWindowData] = useState({
     name: "",
@@ -51,6 +52,7 @@ const CodeWindow = (props) => {
     example1: "",
     example2: "",
     tests: "",
+    defaultInput: "function isDuplicates(){}",
   });
 
   const updateCode = (e) => {
@@ -64,10 +66,9 @@ const CodeWindow = (props) => {
     });
   };
 
-  // Bring in questionData
-
   useEffect(() => {
     getData();
+    // todo: set the default input
   }, []);
   const getData = async () => {
     const res = await axios.get(`/api/challenges`);
@@ -119,37 +120,31 @@ const CodeWindow = (props) => {
   // };
   const handleCodeSubmit = (e) => {
     e.preventDefault();
+
     // let outputData = eval("(" + questionData.input + ")")();
     // outputData = JSON.stringify(outputData);
     // console.log("this is output ", outputData);
     let passed = true;
-    const tests = {
-      test1: {
-        title: "Sum of 1 + 2",
-        input: "const first = 1; const second = 2;",
-        expectedOutput: "3",
-      },
-      test2: {
-        title: "Sum of 2 + 2",
-        input: "const first = 2; const second = 2;",
-        expectedOutput: "4",
-      },
-      callString: "sums(first, second)",
-    };
+    const tests = questionData.todayQuestion.tests;
+    const callString = questionData.todayQuestion.callString;
+
     console.log("handleCodeSubmit -> tests", tests);
     const testOutput = [];
     for (let indTest in tests) {
       console.log("===============================", tests);
       if (indTest === "callString") break;
       const testEnv = `
-      ${tests[indTest].input}
+      ${tests[indTest].parameters}
       ${questionData.input}
-      ${tests.callString}
+      ${callString}
       `;
+      eval(testEnv);
       if (eval(testEnv) == tests[indTest].expectedOutput) {
+        console.log("this is tesEnv ", eval(testEnv));
         console.log("PASSED!");
         testOutput.push(<div>{tests[indTest].title} : Passed!</div>);
       } else {
+        console.log("this is tesEnv ", eval(testEnv));
         console.log("FAILED!");
         passed = false;
         testOutput.push(
@@ -162,6 +157,8 @@ const CodeWindow = (props) => {
     }
     if (passed) {
       console.log("YOU DID IT! YAY!");
+      // redirect
+      setRedirection(true);
       postData();
     } // ADD IN PASSING FUNCTIONALITY HERE
     // RENDER testOutput;
@@ -187,10 +184,16 @@ const CodeWindow = (props) => {
     return <Redirect to="/leaderboard" />;
   };
   // console.log("This is questionData: ", questionData.output);
-  return (
+  return redirection ? (
+    <Redirect to="/leaderboard" />
+  ) : (
     <div className={classes.root}>
       <div className="codemirror">
-        <CodeMirror onChange={updateCode} options={options} />
+        <CodeMirror
+          defaultValue={codeWindowData.defaultInput}
+          onChange={updateCode}
+          options={options}
+        />
       </div>
       <Button variant="contained" onClick={handleResetCode}>
         Reset
