@@ -89,68 +89,31 @@ export default function SectionBlogs({ ...rest }) {
                     </CardHeader>
                   </GridItem>
                   <GridItem xs={12} sm={7} md={7}>
-                    <Info>
-                      <h6 className={classes.cardCategory}>ENTERPRISE</h6>
-                    </Info>
                     <h3 className={classes.cardTitle}>
                       <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                        Autodesk looks to future of 3D printing with Project
-                        Escher
+                        When you are ready, hit start now
                       </a>
                     </h3>
-                    <p className={classes.description1}>
-                      Like so many organizations these days, Autodesk is a
-                      company in transition. It was until recently a traditional
-                      boxed software company selling licenses. Today, it’s
-                      moving to a subscription model. Yet its own business model
-                      disruption is only part of the story — and…
-                      <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                        {" "}
-                        Read More{" "}
-                      </a>
-                    </p>
-                    <p className={classes.author}>
-                      by{" "}
-                      <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                        <b>Mike Butcher</b>
-                      </a>{" "}
-                      , 2 days ago
-                    </p>
+                    <h4>
+                      Once you hit the start button, a timer starts. Your score
+                      is calculate by a combination of performance and time. The
+                      more times you hit run, the lower your score
+                    </h4>
                   </GridItem>
                 </GridContainer>
               </Card>
               <Card plain blog className={classes.card}>
                 <GridContainer>
                   <GridItem xs={12} sm={7} md={7}>
-                    <Danger>
-                      <h6 className={classes.cardCategory}>
-                        <TrendingUp />
-                        TRENDING
-                      </h6>
-                    </Danger>
                     <h3 className={classes.cardTitle}>
                       <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                        6 insights into the French Fashion landscape
+                        Run your code to test with checks
                       </a>
                     </h3>
-                    <p className={classes.description1}>
-                      Like so many organizations these days, Autodesk is a
-                      company in transition. It was until recently a traditional
-                      boxed software company selling licenses. Today, it’s
-                      moving to a subscription model. Yet its own business model
-                      disruption is only part of the story — and…
-                      <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                        {" "}
-                        Read More{" "}
-                      </a>
-                    </p>
-                    <p className={classes.author}>
-                      by{" "}
-                      <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                        <b>Mike Butcher</b>
-                      </a>{" "}
-                      , 2 days ago
-                    </p>
+                    <h4>
+                      Our specialized console istantly displays the values you
+                      return
+                    </h4>
                   </GridItem>
                   <GridItem xs={12} sm={5} md={5}>
                     <CardHeader image plain>
@@ -165,6 +128,35 @@ export default function SectionBlogs({ ...rest }) {
                         }}
                       />
                     </CardHeader>
+                  </GridItem>
+                </GridContainer>
+              </Card>
+              <Card plain blog className={classes.card}>
+                <GridContainer>
+                  <GridItem xs={12} sm={5} md={5}>
+                    <CardHeader image plain>
+                      <a href="#pablito" onClick={(e) => e.preventDefault()}>
+                        <img src={cardBlog4} alt="..." />
+                      </a>
+                      <div
+                        className={classes.coloredShadow}
+                        style={{
+                          backgroundImage: `url(${cardBlog4})`,
+                          opacity: "1",
+                        }}
+                      />
+                    </CardHeader>
+                  </GridItem>
+                  <GridItem xs={12} sm={7} md={7}>
+                    <h3 className={classes.cardTitle}>
+                      <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                        When you are ready, hit start now
+                      </a>
+                    </h3>
+                    <h4>
+                      When you are ready, hit the submit button. If your code
+                      passes all of our test cases, you can continue
+                    </h4>
                   </GridItem>
                 </GridContainer>
               </Card>
