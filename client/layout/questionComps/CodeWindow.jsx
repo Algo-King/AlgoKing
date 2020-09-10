@@ -80,13 +80,6 @@ const CodeWindow = (props) => {
 
   const handleCodeRun = (e) => {
     e.preventDefault();
-    // let outputData = eval("(" + questionData.input + ")")();
-    // outputData = JSON.stringify(outputData);
-    // console.log("this is output ", outputData);
-
-    // let consoleData = eval("(" + questionData.input + ")");
-    // console.log("this is console data in handleCodeSubmit", consoleData);
-
     console.log("==========in run code");
     const outputString = questionData.input;
     // console.log('props', this.props);
@@ -99,11 +92,25 @@ const CodeWindow = (props) => {
     const renderArray = outputArray.map((e) => <div>{e}</div>);
     console.log("renderArray", renderArray);
 
-    // todo: do test case checks here
-
     setQuestionData({
       input: questionData.input,
       output: renderArray,
+    });
+  };
+
+  const handleCodeSubmit = (e) => {
+    e.preventDefault();
+    let outputData = eval("(" + questionData.input + ")")();
+    outputData = JSON.stringify(outputData);
+    console.log("this is output ", outputData);
+
+    // todo: do test case checks here
+
+    let consoleData = eval("(" + questionData.input + ")");
+    console.log("this is console data in handleCodeSubmit", consoleData);
+    setQuestionData({
+      input: questionData.input,
+      output: outputData,
     });
   };
 
@@ -120,7 +127,7 @@ const CodeWindow = (props) => {
       <Button variant="contained" color="secondary" onClick={handleCodeRun}>
         Run
       </Button>
-      <Button variant="contained" color="primary" onClick={handleCodeRun}>
+      <Button variant="contained" color="primary" onClick={handleCodeSubmit}>
         Submit
       </Button>
       <Grid item xs={12}>
