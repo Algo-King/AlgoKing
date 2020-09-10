@@ -41,11 +41,8 @@ const Question = () => {
   // set the data
   const getData = async () => {
     const res = await axios.get(`/api/challenges`);
-    console.log("this is the question data ", res);
     setQuestionData({ ...questionData, todayQuestion: res.data });
   };
-
-  console.log("this qu", questionData);
 
   // make the axios request to get the question and all the tests
 

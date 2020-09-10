@@ -76,7 +76,7 @@ const CodeWindow = (props) => {
     const res = await axios.get(`/api/challenges`);
     setCodeWindowData(res.data);
   };
-  console.log("Here is a CW Data: ", codeWindowData.tests.test1);
+  // console.log("Here is a CW Data: ", codeWindowData.tests.test1);
 
   // ! handle code run
   const handleCodeRun = (e) => {
@@ -116,7 +116,7 @@ const CodeWindow = (props) => {
     });
   };
 
-  console.log("This is questionData: ", questionData.output);
+  // console.log("This is questionData: ", questionData.output);
   return (
     <div className={classes.root}>
       <div className="codemirror">
