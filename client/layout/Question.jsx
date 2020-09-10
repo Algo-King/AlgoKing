@@ -23,8 +23,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Question = () => {
+const Question = (query) => {
   const classes = useStyles();
+
+  console.log("we are querying", query);
 
   const [questionData, setQuestionData] = useState({
     input: "",
