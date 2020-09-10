@@ -61,21 +61,21 @@ export default function SectionBlogs({ ...rest }) {
   // use effect -- make axios request to the old challenges collection
   return (
     <div className="cd-section" {...rest}>
-      {/* Blogs 2 START */}
+      {/* Blogs 1 START */}
       <div className={classes.blog}>
         <div className={classes.container}>
           <GridContainer>
             <GridItem
               xs={12}
-              sm={12}
+              sm={10}
               md={10}
               className={classes.mlAuto + " " + classes.mrAuto}
             >
               <h2 className={classes.title}>Instructions</h2>
-              <GridContainer>
-                <GridItem xs={12} sm={4} md={4}>
-                  <Card plain blog>
-                    <CardHeader plain image>
+              <Card plain blog className={classes.card}>
+                <GridContainer>
+                  <GridItem xs={12} sm={5} md={5}>
+                    <CardHeader image plain>
                       <a href="#pablito" onClick={(e) => e.preventDefault()}>
                         <img src={cardBlog4} alt="..." />
                       </a>
@@ -87,76 +87,92 @@ export default function SectionBlogs({ ...rest }) {
                         }}
                       />
                     </CardHeader>
-                    <CardBody plain>
-                      <h4 className={classes.cardTitle}>
-                        <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                          1) Hit Start
-                        </a>
-                      </h4>
-                      <h5 className={classes.description}>
-                        Timer Starts immediately
-                      </h5>
-                    </CardBody>
-                  </Card>
-                </GridItem>
-                <GridItem xs={12} sm={4} md={4}>
-                  <Card plain blog>
-                    <CardHeader plain image>
+                  </GridItem>
+                  <GridItem xs={12} sm={7} md={7}>
+                    <Info>
+                      <h6 className={classes.cardCategory}>ENTERPRISE</h6>
+                    </Info>
+                    <h3 className={classes.cardTitle}>
+                      <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                        Autodesk looks to future of 3D printing with Project
+                        Escher
+                      </a>
+                    </h3>
+                    <p className={classes.description1}>
+                      Like so many organizations these days, Autodesk is a
+                      company in transition. It was until recently a traditional
+                      boxed software company selling licenses. Today, it’s
+                      moving to a subscription model. Yet its own business model
+                      disruption is only part of the story — and…
+                      <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                        {" "}
+                        Read More{" "}
+                      </a>
+                    </p>
+                    <p className={classes.author}>
+                      by{" "}
+                      <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                        <b>Mike Butcher</b>
+                      </a>{" "}
+                      , 2 days ago
+                    </p>
+                  </GridItem>
+                </GridContainer>
+              </Card>
+              <Card plain blog className={classes.card}>
+                <GridContainer>
+                  <GridItem xs={12} sm={7} md={7}>
+                    <Danger>
+                      <h6 className={classes.cardCategory}>
+                        <TrendingUp />
+                        TRENDING
+                      </h6>
+                    </Danger>
+                    <h3 className={classes.cardTitle}>
+                      <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                        6 insights into the French Fashion landscape
+                      </a>
+                    </h3>
+                    <p className={classes.description1}>
+                      Like so many organizations these days, Autodesk is a
+                      company in transition. It was until recently a traditional
+                      boxed software company selling licenses. Today, it’s
+                      moving to a subscription model. Yet its own business model
+                      disruption is only part of the story — and…
+                      <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                        {" "}
+                        Read More{" "}
+                      </a>
+                    </p>
+                    <p className={classes.author}>
+                      by{" "}
+                      <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                        <b>Mike Butcher</b>
+                      </a>{" "}
+                      , 2 days ago
+                    </p>
+                  </GridItem>
+                  <GridItem xs={12} sm={5} md={5}>
+                    <CardHeader image plain>
                       <a href="#pablito" onClick={(e) => e.preventDefault()}>
-                        <img src={cardBlog4} alt="..." />
+                        <img src={office2} alt="..." />
                       </a>
                       <div
                         className={classes.coloredShadow}
                         style={{
-                          backgroundImage: `url(${cardBlog4})`,
+                          backgroundImage: `url(${office2})`,
                           opacity: "1",
                         }}
                       />
                     </CardHeader>
-                    <CardBody plain>
-                      <h4 className={classes.cardTitle}>
-                        <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                          2) Write Your Solution
-                        </a>
-                      </h4>
-                      <h5 className={classes.description}>
-                        Timer Starts immediately
-                      </h5>
-                    </CardBody>
-                  </Card>
-                </GridItem>
-                <GridItem xs={12} sm={4} md={4}>
-                  <Card plain blog>
-                    <CardHeader plain image>
-                      <a href="#pablito" onClick={(e) => e.preventDefault()}>
-                        <img src={cardBlog4} alt="..." />
-                      </a>
-                      <div
-                        className={classes.coloredShadow}
-                        style={{
-                          backgroundImage: `url(${cardBlog4})`,
-                          opacity: "1",
-                        }}
-                      />
-                    </CardHeader>
-                    <CardBody plain>
-                      <h4 className={classes.cardTitle}>
-                        <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                          3) Submit Code
-                        </a>
-                      </h4>
-                      <h5 className={classes.description}>
-                        Timer Starts immediately
-                      </h5>
-                    </CardBody>
-                  </Card>
-                </GridItem>
-              </GridContainer>
+                  </GridItem>
+                </GridContainer>
+              </Card>
             </GridItem>
           </GridContainer>
         </div>
       </div>
-      {/* Blogs 2 END */}
+      {/* Blogs 1 END */}
       {/* Blogs 3 START */}
       <div className={classes.blog}>
         <div className={classes.container}>
