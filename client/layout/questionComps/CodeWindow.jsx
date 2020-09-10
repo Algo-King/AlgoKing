@@ -78,6 +78,7 @@ const CodeWindow = (props) => {
   };
   console.log("Here is a CW Data: ", codeWindowData.tests.test1);
 
+  // ! handle code run
   const handleCodeRun = (e) => {
     e.preventDefault();
     console.log("==========in run code");
@@ -98,6 +99,7 @@ const CodeWindow = (props) => {
     });
   };
 
+  // ! code submit
   const handleCodeSubmit = (e) => {
     e.preventDefault();
     let outputData = eval("(" + questionData.input + ")")();
