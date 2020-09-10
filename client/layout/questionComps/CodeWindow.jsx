@@ -1,24 +1,23 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 // Codemirror Styling
-require('codemirror/lib/codemirror.css');
+// require('codemirror/lib/codemirror.css');
+import 'codemirror/lib/codemirror.css';
 
 // Codemirror Languages
-require('codemirror/mode/javascript/javascript');
+import 'codemirror/mode/javascript/javascript';
 
 // Codemirror Themes
-require('codemirror/mode/markdown/markdown');
-require('codemirror/theme/monokai.css');
-require('codemirror/theme/midnight.css');
-require('codemirror/theme/lesser-dark.css');
-require('codemirror/theme/solarized.css');
+import 'codemirror/mode/markdown/markdown';
+import 'codemirror/theme/blackboard.css';
+
 
 // Codemirror Component
 const CodeMirror = require('react-codemirror');
 const options = {
     lineNumbers: true,
-    mode: 'sql',
-    theme: 'lesser-dark',
+    mode: 'javascript',
+    theme: 'blackboard',
   };
 
 class CodeWindow extends Component {
@@ -39,6 +38,17 @@ class CodeWindow extends Component {
     })
   }
 
+  handleResetCode = (e) => {
+    this.setState({
+      codeString : '',
+    })
+  }
+
+  handleRunCode = (e) => {
+    eval(this.state.codeString);
+    console.log('in run code')
+  }
+  
   handleCodeSubmit = (e) => {
     e.preventDefault();
     console.log("next up, the log...");
@@ -55,7 +65,11 @@ class CodeWindow extends Component {
               options={options}
             />
           </div>
-          <button>Submit</button>
+          <div>
+            <button>Reset Code</button>
+            <button>Run Code</button>
+            <button>Submit</button>
+          </div>
         </form>
       </div>
     );
