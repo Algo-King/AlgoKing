@@ -17,7 +17,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Results = () => {
+const Results = (props) => {
+  const { todayQuestion } = props.questionData;
+
+  let testTitle = "";
+  let testInput = "";
+  let correctOutput = "";
+
+  if (todayQuestion.tests) {
+    console.log("in results", todayQuestion.tests.test1.expectedOutput);
+    testInput = todayQuestion.example1.input;
+    testTitle = todayQuestion.tests.test1.title;
+    correctOutput = todayQuestion.tests.test1.expectedOutput;
+  }
+
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -31,12 +44,14 @@ const Results = () => {
           </h4>
           <h5>
             <b>Test Input:</b>
+            {testInput}
           </h5>
           <h5>
-            <b>Your Output:</b>{" "}
+            <b>Your Output:</b>
           </h5>
           <h5>
-            <b>Correct Output:</b>{" "}
+            <b>Correct Output: </b>
+            {correctOutput}
           </h5>
         </Paper>
       </Grid>

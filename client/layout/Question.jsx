@@ -58,7 +58,7 @@ const Question = () => {
               setQuestionData={setQuestionData}
             />
             <Prompt className="prompt" />
-            <Results className="results" />
+            <Results className="results" questionData={questionData} />
           </Paper>
         </Grid>
         <Grid item xs={8}>

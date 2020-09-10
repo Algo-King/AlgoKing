@@ -54,10 +54,7 @@ const CodeWindow = (props) => {
   });
 
   const updateCode = (e) => {
-    setQuestionData({
-      input: e,
-      // output,
-    });
+    setQuestionData({ ...questionData, input: e });
   };
 
   const handleResetCode = (e) => {
