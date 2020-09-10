@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 // https://upmostly.com/tutorials/build-a-react-timer-component-using-hooks
 
@@ -9,7 +9,7 @@ const Timer = (props) => {
 
   function toggle() {
     setIsActive(!isActive);
-    console.log('This is seconds: ', seconds);
+    console.log("This is seconds: ", seconds);
   }
 
   function reset() {
@@ -31,17 +31,19 @@ const Timer = (props) => {
 
   return (
     <div className="app">
-      <div className="time">{seconds}s</div>
-      <div className="row">
+      <div className="time">
+        <h1>Timer: {seconds}s</h1>
+      </div>
+      {/* <div className="row">
         <button
           className={`button button-primary button-primary-${
-            isActive ? 'active' : 'inactive'
+            isActive ? "active" : "inactive"
           }`}
           onClick={toggle}
         >
-          {isActive ? 'Pause' : 'Start'}
+          {isActive ? "Pause" : "Start"}
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };
