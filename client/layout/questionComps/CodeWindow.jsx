@@ -47,6 +47,7 @@ const CodeWindow = (props) => {
   const updateCode = (e) => {
     setQuestionData({
       input: e,
+      // output,
     });
   };
 
@@ -60,16 +61,18 @@ const CodeWindow = (props) => {
   const handleCodeRun = (e) => {
     e.preventDefault();
     let outputData = eval("(" + questionData.input + ")")();
+    outputData = JSON.stringify(outputData);
     console.log("this is output ", outputData);
 
     let consoleData = eval("(" + questionData.input + ")");
     console.log("this is console data ", consoleData);
 
+    // todo: do test case checks here
+
     setQuestionData({
       input: questionData.input,
       output: outputData,
     });
-    // eval(questionData.input);
   };
 
   console.log(questionData);
@@ -91,7 +94,8 @@ const CodeWindow = (props) => {
       <Grid item xs={12}>
         <Paper className={classes.paper}>
           <b>return output:</b>
-          {questionData.output}
+
+          <div>{questionData.output}</div>
         </Paper>
       </Grid>
       {/* create a box for vertical */}
