@@ -18,7 +18,7 @@ const CodeMirror = require("react-codemirror");
 const options = {
   lineNumbers: true,
   autoCloseBrackets: true,
-  mode: "sql",
+  mode: "javascript",
   theme: "lesser-dark",
 };
 
@@ -37,10 +37,16 @@ const CodeWindow = (props) => {
     // var customJSfromServer = questionData.input;
     // var evalValue = new Function(customJSfromServer)();
     // console.log(evalValue); // should be "6";
+
+    // this gets the return values
     let outputData = eval("(" + questionData.input + ")")();
     console.log("this is output ", outputData);
 
+    let consoleData = eval("(" + questionData.input + ")");
+    console.log("this is console data ", consoleData);
+
     setQuestionData({
+      input: questionData.input,
       output: outputData,
     });
     // eval(questionData.input);
