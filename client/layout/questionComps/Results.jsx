@@ -24,8 +24,8 @@ const Results = (props) => {
   let testInput = "";
   let correctOutput = "";
 
-  if (todayQuestion.tests) {
-    console.log("in results", todayQuestion.tests.test1.expectedOutput);
+  if (todayQuestion.input) {
+    // console.log("in results", todayQuestion.tests.test1.expectedOutput);
     testInput = todayQuestion.example1.input;
     testTitle = todayQuestion.tests.test1.title;
     correctOutput = todayQuestion.tests.test1.expectedOutput;

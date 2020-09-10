@@ -3,14 +3,14 @@ import React, { useState, useEffect } from "react";
 // https://upmostly.com/tutorials/build-a-react-timer-component-using-hooks
 
 const Timer = (props) => {
-  const { questionData, setQuestionData } = props;
+  const { time, setTime } = props;
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(true);
 
-  function toggle() {
-    setIsActive(!isActive);
-    console.log("This is seconds: ", seconds);
-  }
+  // function toggle() {
+  //   setIsActive(!isActive);
+  //   console.log("This is seconds: ", seconds);
+  // }
 
   function reset() {
     setSeconds(0);
@@ -22,7 +22,10 @@ const Timer = (props) => {
     if (isActive) {
       interval = setInterval(() => {
         setSeconds((seconds) => seconds + 1);
+        setTime({ seconds: seconds });
+        // setQuestionData({ ...questionData, seconds: seconds });
       }, 1000);
+      // console.log(seconds);
     } else if (!isActive && seconds !== 0) {
       clearInterval(interval);
     }

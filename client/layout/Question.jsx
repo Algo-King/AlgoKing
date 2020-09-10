@@ -29,11 +29,17 @@ const Question = () => {
   const [questionData, setQuestionData] = useState({
     input: "",
     output: "",
-    seconds: 0,
     question: "",
     tests: "",
     todayQuestion: {},
   });
+
+  const [time, setTime] = useState({
+    seconds: 0,
+  });
+
+  // console.log(questionData);
+  console.log(time);
 
   useEffect(() => {
     getData();
@@ -52,11 +58,7 @@ const Question = () => {
         <Grid item xs={4}>
           <Paper className={classes.paper}>
             <Link to="/home"> Give up and go home</Link>
-            <Top
-              className="top"
-              quetionData={questionData}
-              setQuestionData={setQuestionData}
-            />
+            <Top className="top" time={time} setTime={setTime} />
             <Prompt className="prompt" />
             <Results className="results" questionData={questionData} />
           </Paper>
