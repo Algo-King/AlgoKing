@@ -41,6 +41,7 @@ const Question = () => {
       <Grid container spacing={1}>
         <Grid item xs={4}>
           <Paper className={classes.paper}>
+            <Link to="/home"> Give up and go home</Link>
             <Top
               className="top"
               quetionData={questionData}

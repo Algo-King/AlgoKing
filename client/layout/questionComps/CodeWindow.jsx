@@ -36,9 +36,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   paper: {
+    height: '50vh',
     padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
   },
 }));
 
@@ -57,6 +56,7 @@ const CodeWindow = (props) => {
   const updateCode = (e) => {
     setQuestionData({
       input: e,
+      // output,
     });
   };
 
@@ -78,23 +78,21 @@ const CodeWindow = (props) => {
   };
   console.log('Here is a CW Data: ', codeWindowData.tests.test1);
 
-  const handleCodeSubmit = (e) => {
+  const handleCodeRun = (e) => {
     e.preventDefault();
     let outputData = eval('(' + questionData.input + ')')();
+    outputData = JSON.stringify(outputData);
     console.log('this is output ', outputData);
 
     let consoleData = eval('(' + questionData.input + ')');
     console.log('this is console data in handleCodeSubmit', consoleData);
 
+    // todo: do test case checks here
+
     setQuestionData({
       input: questionData.input,
       output: outputData,
     });
-    // eval(questionData.input);
-    console.log(
-      'This is questionData in handleCodeSubmit: ',
-      questionData.output
-    );
   };
 
   console.log('This is questionData: ', questionData.output);
@@ -107,13 +105,19 @@ const CodeWindow = (props) => {
         Reset
       </Button>
       {/* We need to figure this out */}
-      <Button variant="contained" color="secondary">
+      <Button variant="contained" color="secondary" onClick={handleCodeRun}>
         Run
       </Button>
-      <Button variant="contained" color="primary" onClick={handleCodeSubmit}>
+      <Button variant="contained" color="primary" onClick={handleCodeRun}>
         Submit
       </Button>
+      <Grid item xs={12}>
+        <Paper className={classes.paper}>
+          <b>return output:</b>
 
+          <div>{questionData.output}</div>
+        </Paper>
+      </Grid>
       {/* create a box for vertical */}
     </div>
   );
