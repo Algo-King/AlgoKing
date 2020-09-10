@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 // Codemirror Styling
 // require('codemirror/lib/codemirror.css');
 import 'codemirror/lib/codemirror.css';
+import axios from 'axios';
 
 // Codemirror Languages
 import 'codemirror/mode/javascript/javascript';
@@ -13,18 +14,14 @@ import 'codemirror/theme/blackboard.css';
 require('codemirror/addon/edit/closebrackets');
 
 //material ui
-import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 
 // Codemirror Component
-<<<<<<< HEAD
 const CodeMirror = require('react-codemirror');
-=======
-const CodeMirror = require("react-codemirror");
 
->>>>>>> 155e94c0d3623e9908f3d4a2f06cc75c3fc8453f
 const options = {
   lineNumbers: true,
   autoCloseBrackets: true,
@@ -34,13 +31,13 @@ const options = {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    "& > *": {
+    '& > *': {
       margin: theme.spacing(1),
     },
   },
   paper: {
     padding: theme.spacing(2),
-    textAlign: "center",
+    textAlign: 'center',
     color: theme.palette.text.secondary,
   },
 }));
@@ -48,6 +45,14 @@ const useStyles = makeStyles((theme) => ({
 const CodeWindow = (props) => {
   const classes = useStyles();
   const { setQuestionData, questionData } = props;
+
+  const [codeWindowData, setCodeWindowData] = useState({
+    name: '',
+    problem: '',
+    example1: '',
+    example2: '',
+    tests: '',
+  });
 
   const updateCode = (e) => {
     setQuestionData({
@@ -62,20 +67,34 @@ const CodeWindow = (props) => {
     });
   };
 
+  // Bring in questionData
+
+  useEffect(() => {
+    getData();
+  }, []);
+  const getData = async () => {
+    const res = await axios.get(`/api/challenges`);
+    setCodeWindowData(res.data);
+  };
+  console.log('Here is a CW Data: ', codeWindowData.tests.test1);
+
   const handleCodeSubmit = (e) => {
     e.preventDefault();
-    let outputData = eval("(" + questionData.input + ")")();
-    console.log("this is output ", outputData);
+    let outputData = eval('(' + questionData.input + ')')();
+    console.log('this is output ', outputData);
 
     let consoleData = eval('(' + questionData.input + ')');
-    console.log('this is console data ', consoleData);
+    console.log('this is console data in handleCodeSubmit', consoleData);
 
     setQuestionData({
       input: questionData.input,
       output: outputData,
     });
     // eval(questionData.input);
-    console.log('This is questionData in handleCodeSubmit: ', questionData);
+    console.log(
+      'This is questionData in handleCodeSubmit: ',
+      questionData.output
+    );
   };
 
   console.log('This is questionData: ', questionData.output);
