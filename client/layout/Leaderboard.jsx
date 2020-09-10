@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import axios from 'axios';
-// const onChange = (e) => {
-// 	document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-// 	localStorage.removeItem('token');
-// 	console.log('hello');
-// };
+
 const Leaderboard = () => {
 	const [leaderData, setLeaderData] = useState([
 		{
@@ -24,7 +20,7 @@ const Leaderboard = () => {
 		setLeaderData(res.data);
 	};
 
-	console.log(leaderData);
+	// console.log(leaderData);
 	// let { name, challengeName, time, score } = leaderData;
 	// console.log('name', name);
 	const sortedArr = leaderData.sort(function (a, b) {
