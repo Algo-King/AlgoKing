@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const challengeSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -16,10 +16,17 @@ const challengeSchema = new mongoose.Schema({
     input: { type: String },
     output: { type: String },
   },
+  tests: {
+    test1: { type: String },
+    test2: { type: String },
+    test3: { type: String },
+    test4: { type: String },
+    test5: { type: String },
+  },
   date: {
     type: Date,
     default: Date.now,
   },
 });
 
-module.exports = Challenge = mongoose.model("challenge", challengeSchema);
+module.exports = Challenge = mongoose.model('challenge', challengeSchema);

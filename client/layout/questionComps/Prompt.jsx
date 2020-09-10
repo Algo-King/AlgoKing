@@ -17,7 +17,7 @@ const Prompt = () => {
     const res = await axios.get(`/api/challenges`);
     setQuestion(res.data);
   };
-  console.log("this is the question ", question);
+  console.log("Here is a question: ", question);
 
   return (
     <div>
