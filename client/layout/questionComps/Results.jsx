@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Results = (props) => {
   const { todayQuestion } = props.questionData;
-  console.log("we are here", todayQuestion);
+  // console.log("we are here", todayQuestion);
 
   let testTitle = "";
   let testInput = "";

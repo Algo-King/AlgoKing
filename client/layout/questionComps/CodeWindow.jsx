@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 // Codemirror Styling
 // require('codemirror/lib/codemirror.css');
 import "codemirror/lib/codemirror.css";
@@ -98,22 +98,79 @@ const CodeWindow = (props) => {
   };
 
   // ! code submit then redirect to the leaderboard, which happens after submitted
+
+  // const handleCodeSubmit = (e) => {
+  //   e.preventDefault();
+  //   let outputData = eval("(" + questionData.input + ")")();
+  //   outputData = JSON.stringify(outputData);
+  //   console.log("this is output ", outputData);
+
+  //   // todo: do test case checks here
+
+  //   let consoleData = eval("(" + questionData.input + ")");
+  //   console.log("this is console data in handleCodeSubmit", consoleData);
+  //   setQuestionData({
+  //     ...questionData,
+  //     input: questionData.input,
+  //     output: outputData,
+  //   });
+  //   postData();
+  // };
   const handleCodeSubmit = (e) => {
     e.preventDefault();
-    let outputData = eval("(" + questionData.input + ")")();
-    outputData = JSON.stringify(outputData);
-    console.log("this is output ", outputData);
-
+    // let outputData = eval("(" + questionData.input + ")")();
+    // outputData = JSON.stringify(outputData);
+    // console.log("this is output ", outputData);
+    let passed = true;
+    const tests = {
+      test1: {
+        title: "Sum of 1 + 2",
+        input: "const first = 1; const second = 2;",
+        expectedOutput: "3",
+      },
+      test2: {
+        title: "Sum of 2 + 2",
+        input: "const first = 2; const second = 2;",
+        expectedOutput: "4",
+      },
+      callString: "sums(first, second)",
+    };
+    console.log("handleCodeSubmit -> tests", tests);
+    const testOutput = [];
+    for (let indTest in tests) {
+      console.log("===============================", tests);
+      if (indTest === "callString") break;
+      const testEnv = `
+      ${tests[indTest].input}
+      ${questionData.input}
+      ${tests.callString}
+      `;
+      if (eval(testEnv) == tests[indTest].expectedOutput) {
+        console.log("PASSED!");
+        testOutput.push(<div>{tests[indTest].title} : Passed!</div>);
+      } else {
+        console.log("FAILED!");
+        passed = false;
+        testOutput.push(
+          <div>
+            {tests[indTest].title} : Failed /n Expected:{" "}
+            {tests[indTest].expectedOutput}/nReceived:{eval(testEnv)}
+          </div>
+        );
+      }
+    }
+    if (passed) {
+      console.log("YOU DID IT! YAY!");
+      postData();
+    } // ADD IN PASSING FUNCTIONALITY HERE
+    // RENDER testOutput;
     // todo: do test case checks here
-
-    let consoleData = eval("(" + questionData.input + ")");
-    console.log("this is console data in handleCodeSubmit", consoleData);
-    setQuestionData({
-      ...questionData,
-      input: questionData.input,
-      output: outputData,
-    });
-    postData();
+    // let consoleData = eval("(" + questionData.input + ")");
+    // console.log("this is console data in handleCodeSubmit", consoleData);
+    // setQuestionData({
+    //   input: questionData.input,
+    //   output: outputData,
+    // });
   };
 
   const postData = async () => {
@@ -123,6 +180,10 @@ const CodeWindow = (props) => {
       time: time.seconds,
     };
     await axios.post("/api/submissions", body);
+    // ! create a redirect
+    console.log("we are here");
+    // todo: does not work rn
+    return <Redirect to="/leaderboard" />;
   };
   // console.log("This is questionData: ", questionData.output);
   return (
