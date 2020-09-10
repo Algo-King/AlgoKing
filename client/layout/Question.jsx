@@ -38,9 +38,6 @@ const Question = () => {
     seconds: 0,
   });
 
-  // console.log(questionData);
-  console.log(time);
-
   useEffect(() => {
     getData();
   }, []);
@@ -68,6 +65,7 @@ const Question = () => {
             <CodeWindow
               setQuestionData={setQuestionData}
               questionData={questionData}
+              time={time}
             />
           </Paper>
         </Grid>

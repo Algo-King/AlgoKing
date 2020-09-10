@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 
 const CodeWindow = (props) => {
   const classes = useStyles();
-  const { setQuestionData, questionData } = props;
+  const { setQuestionData, questionData, time } = props;
 
   const [codeWindowData, setCodeWindowData] = useState({
     name: "",
@@ -113,6 +113,8 @@ const CodeWindow = (props) => {
       input: questionData.input,
       output: outputData,
     });
+
+    // create a post request if our test pass - axios post, name and score
   };
 
   // console.log("This is questionData: ", questionData.output);
