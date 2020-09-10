@@ -12,18 +12,47 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   paper: {
-    height: "40vh",
+    height: "35vh",
     padding: theme.spacing(2),
   },
 }));
 
-const Results = () => {
+const Results = (props) => {
+  const { todayQuestion } = props.questionData;
+
+  let testTitle = "";
+  let testInput = "";
+  let correctOutput = "";
+
+  if (todayQuestion.input) {
+    // console.log("in results", todayQuestion.tests.test1.expectedOutput);
+    testInput = todayQuestion.example1.input;
+    testTitle = todayQuestion.tests.test1.title;
+    correctOutput = todayQuestion.tests.test1.expectedOutput;
+  }
+
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <Grid item xs={12}>
         <Paper className={classes.paper}>
-          <h4>Test Cases:</h4>
+          <h3>
+            <b>Test Results</b>
+          </h3>
+          <h4>
+            <b>Test Case: This is an example title</b>
+          </h4>
+          <h5>
+            <b>Test Input:</b>
+            {testInput}
+          </h5>
+          <h5>
+            <b>Your Output:</b>
+          </h5>
+          <h5>
+            <b>Correct Output: </b>
+            {correctOutput}
+          </h5>
         </Paper>
       </Grid>
     </div>

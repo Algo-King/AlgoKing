@@ -54,10 +54,7 @@ const CodeWindow = (props) => {
   });
 
   const updateCode = (e) => {
-    setQuestionData({
-      input: e,
-      // output,
-    });
+    setQuestionData({ ...questionData, input: e });
   };
 
   const handleResetCode = (e) => {
@@ -76,7 +73,7 @@ const CodeWindow = (props) => {
     const res = await axios.get(`/api/challenges`);
     setCodeWindowData(res.data);
   };
-  console.log("Here is a CW Data: ", codeWindowData.tests.test1);
+  // console.log("Here is a CW Data: ", codeWindowData.tests.test1);
 
   // ! handle code run
   const handleCodeRun = (e) => {
@@ -94,12 +91,13 @@ const CodeWindow = (props) => {
     console.log("renderArray", renderArray);
 
     setQuestionData({
+      ...questionData,
       input: questionData.input,
       output: renderArray,
     });
   };
 
-  // ! code submit
+  // ! code submit then redirect to the leaderboard, which happens after submitted
   const handleCodeSubmit = (e) => {
     e.preventDefault();
     let outputData = eval("(" + questionData.input + ")")();
@@ -111,12 +109,13 @@ const CodeWindow = (props) => {
     let consoleData = eval("(" + questionData.input + ")");
     console.log("this is console data in handleCodeSubmit", consoleData);
     setQuestionData({
+      ...questionData,
       input: questionData.input,
       output: outputData,
     });
   };
 
-  console.log("This is questionData: ", questionData.output);
+  // console.log("This is questionData: ", questionData.output);
   return (
     <div className={classes.root}>
       <div className="codemirror">
