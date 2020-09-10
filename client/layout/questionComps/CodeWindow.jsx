@@ -35,9 +35,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   paper: {
+    height: "50vh",
     padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
   },
 }));
 
@@ -89,7 +88,11 @@ const CodeWindow = (props) => {
       <Button variant="contained" color="primary" onClick={handleCodeSubmit}>
         Submit
       </Button>
-
+      <Grid item xs={12}>
+        <Paper className={classes.paper}>
+          Put the outputed data here: {questionData.output}
+        </Paper>
+      </Grid>
       {/* create a box for vertical */}
     </div>
   );
