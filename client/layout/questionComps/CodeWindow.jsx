@@ -23,7 +23,13 @@ class CodeWindow extends Component {
   }
 
   state = {
-    codeString: '',
+    baseText: ``,
+    codeString: `let vari = 'happy';
+console.log(vari);  // happy
+console.log(1 + 1);  // 2
+console.log([1,2,3][0]);  // 1
+['this','is','codesmith!'].forEach( e => (console.log(e)));
+// this | is | codesmith!`,
     outputString: ``,
     // outputString: `
     // let vari = 'happy';
@@ -38,15 +44,15 @@ class CodeWindow extends Component {
   };  
 
   updateCode = (e) => {
+    console.log('IN UPDATE CODE ', e)
     this.setState({
       codeString : e,
     })
   }
 
   handleResetCode = (e) => {
-    this.setState({
-      codeString : '',
-    })
+    const codeString = this.state.baseText;
+    this.setState({ codeString });
   }
 
   handleRunCode = (e) => {
@@ -68,12 +74,13 @@ class CodeWindow extends Component {
         <form onSubmit={this.handleCodeSubmit}>
           <div className="codemirror">
             <CodeMirror
+              defaultValue={this.state.codeString}
               onChange={this.updateCode}
               options={options}
             />
           </div>
           <div>
-            <button>Reset Code</button>
+            <button onClick={this.handleResetCode}>Reset Code</button>
             <button onClick={this.handleRunCode}>Run Code</button>
             <button>Submit</button>
           </div>
