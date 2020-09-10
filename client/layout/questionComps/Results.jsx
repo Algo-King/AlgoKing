@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   paper: {
-    height: "40vh",
+    height: "35vh",
     padding: theme.spacing(2),
   },
 }));
@@ -23,7 +23,21 @@ const Results = () => {
     <div className={classes.root}>
       <Grid item xs={12}>
         <Paper className={classes.paper}>
-          <h4>Test Cases:</h4>
+          <h3>
+            <b>Test Cases:</b>
+          </h3>
+          <h4>
+            <b>Test Case: This is an example title</b>
+          </h4>
+          <h5>
+            <b>Test Input:</b>
+          </h5>
+          <h5>
+            <b>Your Output:</b>{" "}
+          </h5>
+          <h5>
+            <b>Correct Output:</b>{" "}
+          </h5>
         </Paper>
       </Grid>
     </div>

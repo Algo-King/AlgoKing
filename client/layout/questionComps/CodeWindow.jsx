@@ -99,7 +99,7 @@ const CodeWindow = (props) => {
     });
   };
 
-  // ! code submit
+  // ! code submit then redirect to the leaderboard, which happens after submitted
   const handleCodeSubmit = (e) => {
     e.preventDefault();
     let outputData = eval("(" + questionData.input + ")")();
