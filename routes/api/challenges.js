@@ -1,13 +1,14 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const config = require('config');
+const config = require("config");
 
 // getting our user model
-const Challenge = require('../../models/Challenge');
+const Challenge = require("../../models/Challenge");
 
 // create post request to add a challenge
-router.post('/', async (req, res) => {
-  const { name, problem, example1, example2, tests } = req.body;
+router.post("/", async (req, res) => {
+  console.log("we are here");
+  const { name, problem, example1, example2, tests, callString } = req.body;
   // try catch block, make in database
   try {
     let challenge = new Challenge({
@@ -16,48 +17,50 @@ router.post('/', async (req, res) => {
       example1,
       example2,
       tests,
+      callString,
     });
+    console.log("we are here");
     await challenge.save();
-    res.send('success');
+    res.send("success");
   } catch {
-    console.log('error');
+    console.log("error");
   }
 });
 
 // get request, get the question of the day -- pick the one that was posted longest ago
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   // try catch to get one challenge -- pass through req here
   try {
     const challenge = await Challenge.findOne();
     res.json(challenge);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('error');
+    res.status(500).send("error");
   }
 });
 
 // delete from the database
-router.delete('/', async (req, res) => {
+router.delete("/", async (req, res) => {
   console.log(req.body);
   try {
     await Challenge.findOneAndRemove({ _id: req.body._id });
-    res.send('user deleted');
+    res.send("user deleted");
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 });
 
 // get request, get the question of the day -- pick the one that was posted longest ago
-router.get('/all', async (req, res) => {
-  console.log('Waddup');
+router.get("/all", async (req, res) => {
+  console.log("Waddup");
   // try catch to get one challenge -- pass through req here
   try {
     const challenge = await Challenge.find();
     res.json(challenge);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('error');
+    res.status(500).send("error");
   }
 });
 

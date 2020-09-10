@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const challengeSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -17,11 +17,24 @@ const challengeSchema = new mongoose.Schema({
     output: { type: String },
   },
   tests: {
-    test1: { type: String },
-    test2: { type: String },
-    test3: { type: String },
-    test4: { type: String },
-    test5: { type: String },
+    test1: {
+      title: { type: String },
+      parameters: { type: String },
+      expectedOutput: { type: String },
+    },
+    test2: {
+      title: { type: String },
+      parameters: { type: String },
+      expectedOutput: { type: String },
+    },
+    test3: {
+      title: { type: String },
+      parameters: { type: String },
+      expectedOutput: { type: String },
+    },
+  },
+  callString: {
+    type: String,
   },
   date: {
     type: Date,
@@ -29,4 +42,4 @@ const challengeSchema = new mongoose.Schema({
   },
 });
 
-module.exports = Challenge = mongoose.model('challenge', challengeSchema);
+module.exports = Challenge = mongoose.model("challenge", challengeSchema);
