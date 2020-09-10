@@ -75,6 +75,7 @@ const CodeWindow = (props) => {
   };
   // console.log("Here is a CW Data: ", codeWindowData.tests.test1);
 
+  console.log(questionData.todayQuestion);
   // ! handle code run
   const handleCodeRun = (e) => {
     e.preventDefault();
