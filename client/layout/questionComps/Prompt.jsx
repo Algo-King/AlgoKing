@@ -17,15 +17,31 @@ const Prompt = () => {
     const res = await axios.get(`/api/challenges`);
     setQuestion(res.data);
   };
-  console.log(question);
+  console.log("this is the question ", question);
 
   return (
     <div>
       <h2>Question: {question.name}</h2>
       <Divider />
       <b>{question.problem}</b>
-      <div>{question.example1.input}</div>
-      <div>{question.example1.output}</div>
+      <Divider />
+      <br></br>
+      <h3>Example 1</h3>
+      <div>
+        <b>Input: </b>
+        {question.example1.input}
+      </div>
+      <div>
+        <b>Output: </b> {question.example1.output}
+      </div>
+      <h3>Example 2</h3>
+      <div>
+        <b>Input: </b>
+        {question.example2.input}
+      </div>
+      <div>
+        <b>Output: </b> {question.example2.output}
+      </div>
     </div>
   );
 };
