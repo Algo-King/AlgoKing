@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import Container from "@material-ui/core/Container";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import Container from '@material-ui/core/Container';
+import axios from 'axios';
 // const onChange = (e) => {
 // 	document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 // 	localStorage.removeItem('token');
@@ -9,8 +9,8 @@ import axios from "axios";
 const Leaderboard = () => {
   const [leaderData, setLeaderData] = useState([
     {
-      name: "",
-      challengeName: "",
+      name: '',
+      challengeName: '',
       time: 0,
       score: 0,
     },
@@ -42,8 +42,8 @@ const Leaderboard = () => {
       <Container>
         {sortedArr.map((el) => {
           return (
-            <Container style={{ height: "5vh" }}>
-              <span>{el.name}</span> <span>{el.challengeName}</span>{" "}
+            <Container style={{ height: '5vh' }}>
+              <span>{el.name}</span> <span>{el.challengeName}</span>{' '}
               <span>{el.time} </span>
             </Container>
           );

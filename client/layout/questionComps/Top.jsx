@@ -1,11 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Timer from './Timer.jsx';
 
 const Top = () => {
   return (
     <div>
-     <div className="questionDate">THURSDAY</div>
-     <div>TIMER PLACEHOLDER: 5:23</div>
+      <div className="questionDate">THURSDAY</div>
+      <Timer />
+      <div>TIMER PLACEHOLDER: 5:23</div>
     </div>
   );
 };
