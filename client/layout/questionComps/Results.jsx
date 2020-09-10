@@ -12,13 +12,14 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   paper: {
-    height: "35vh",
+    height: "39.5vh",
     padding: theme.spacing(2),
   },
 }));
 
 const Results = (props) => {
   const { todayQuestion } = props.questionData;
+  console.log("we are here", todayQuestion);
 
   let testTitle = "";
   let testInput = "";

@@ -23,8 +23,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Question = () => {
+const Question = (query) => {
   const classes = useStyles();
+
+  console.log("we are querying", query);
 
   const [questionData, setQuestionData] = useState({
     input: "",
@@ -37,9 +39,6 @@ const Question = () => {
   const [time, setTime] = useState({
     seconds: 0,
   });
-
-  // console.log(questionData);
-  console.log(time);
 
   useEffect(() => {
     getData();
@@ -68,6 +67,7 @@ const Question = () => {
             <CodeWindow
               setQuestionData={setQuestionData}
               questionData={questionData}
+              time={time}
             />
           </Paper>
         </Grid>
