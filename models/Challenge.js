@@ -33,6 +33,9 @@ const challengeSchema = new mongoose.Schema({
       expectedOutput: { type: String },
     },
   },
+  defaultInput: {
+    type: String,
+  },
   callString: {
     type: String,
   },

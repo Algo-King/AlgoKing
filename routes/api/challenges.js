@@ -8,7 +8,15 @@ const Challenge = require("../../models/Challenge");
 // create post request to add a challenge
 router.post("/", async (req, res) => {
   console.log("we are here");
-  const { name, problem, example1, example2, tests, callString } = req.body;
+  const {
+    name,
+    problem,
+    example1,
+    example2,
+    tests,
+    callString,
+    defaultInput,
+  } = req.body;
   // try catch block, make in database
   try {
     let challenge = new Challenge({
@@ -18,6 +26,7 @@ router.post("/", async (req, res) => {
       example2,
       tests,
       callString,
+      defaultInput,
     });
     console.log("we are here");
     await challenge.save();
