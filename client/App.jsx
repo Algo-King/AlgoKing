@@ -10,6 +10,8 @@ import "./assets/styles.scss";
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/material.css";
 import "./assets/scss/material-kit-pro-react.scss";
+require('codemirror/lib/codemirror.css');
+
 
 const App = () => {
   return (

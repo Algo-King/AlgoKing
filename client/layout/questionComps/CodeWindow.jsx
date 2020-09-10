@@ -1,16 +1,15 @@
 import React, { Component, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 // Codemirror Styling
-require("codemirror/lib/codemirror.css");
+// require('codemirror/lib/codemirror.css');
+import "codemirror/lib/codemirror.css";
 
 // Codemirror Languages
-require("codemirror/mode/javascript/javascript");
+import "codemirror/mode/javascript/javascript";
+
 // Codemirror Themes
-require("codemirror/mode/markdown/markdown");
-require("codemirror/theme/monokai.css");
-require("codemirror/theme/midnight.css");
-require("codemirror/theme/lesser-dark.css");
-require("codemirror/theme/solarized.css");
+import "codemirror/mode/markdown/markdown";
+import "codemirror/theme/blackboard.css";
 require("codemirror/addon/edit/closebrackets");
 
 // Codemirror Component
@@ -19,7 +18,7 @@ const options = {
   lineNumbers: true,
   autoCloseBrackets: true,
   mode: "javascript",
-  theme: "lesser-dark",
+  theme: "blackboard",
 };
 
 const CodeWindow = (props) => {
@@ -28,6 +27,13 @@ const CodeWindow = (props) => {
   const updateCode = (e) => {
     setQuestionData({
       input: e,
+    });
+  };
+
+  const handleResetCode = (e) => {
+    setQuestionData({
+      input: "",
+      output: "",
     });
   };
 
@@ -60,6 +66,8 @@ const CodeWindow = (props) => {
           <CodeMirror onChange={updateCode} options={options} />
         </div>
         <button>Submit</button>
+        <button>Reset Code</button>
+        <button>Run Code</button>
       </form>
     </div>
   );
