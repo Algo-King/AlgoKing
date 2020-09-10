@@ -34,7 +34,7 @@ const Question = () => {
   return (
     <div className={classes.root}>
       <Grid container spacing={1}>
-        <Grid item xs={5}>
+        <Grid item xs={4}>
           <Paper className={classes.paper}>
             <Top
               className="top"
@@ -45,7 +45,7 @@ const Question = () => {
             <Results className="results" />
           </Paper>
         </Grid>
-        <Grid item xs={7}>
+        <Grid item xs={8}>
           <Paper className={classes.paper}>
             <CodeWindow
               setQuestionData={setQuestionData}
