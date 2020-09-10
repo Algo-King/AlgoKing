@@ -1,24 +1,24 @@
-import React, { Component, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { Component, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 // Codemirror Styling
 // require('codemirror/lib/codemirror.css');
-import "codemirror/lib/codemirror.css";
+import 'codemirror/lib/codemirror.css';
 
 // Codemirror Languages
-import "codemirror/mode/javascript/javascript";
+import 'codemirror/mode/javascript/javascript';
 
 // Codemirror Themes
-import "codemirror/mode/markdown/markdown";
-import "codemirror/theme/blackboard.css";
-require("codemirror/addon/edit/closebrackets");
+import 'codemirror/mode/markdown/markdown';
+import 'codemirror/theme/blackboard.css';
+require('codemirror/addon/edit/closebrackets');
 
 // Codemirror Component
-const CodeMirror = require("react-codemirror");
+const CodeMirror = require('react-codemirror');
 const options = {
   lineNumbers: true,
   autoCloseBrackets: true,
-  mode: "javascript",
-  theme: "blackboard",
+  mode: 'javascript',
+  theme: 'blackboard',
 };
 
 const CodeWindow = (props) => {
@@ -32,8 +32,8 @@ const CodeWindow = (props) => {
 
   const handleResetCode = (e) => {
     setQuestionData({
-      input: "",
-      output: "",
+      input: '',
+      output: '',
     });
   };
 
@@ -45,20 +45,21 @@ const CodeWindow = (props) => {
     // console.log(evalValue); // should be "6";
 
     // this gets the return values
-    let outputData = eval("(" + questionData.input + ")")();
-    console.log("this is output ", outputData);
+    let outputData = eval('(' + questionData.input + ')')();
+    console.log('this is output ', outputData);
 
-    let consoleData = eval("(" + questionData.input + ")");
-    console.log("this is console data ", consoleData);
+    let consoleData = eval('(' + questionData.input + ')');
+    console.log('this is console data ', consoleData);
 
     setQuestionData({
       input: questionData.input,
       output: outputData,
     });
     // eval(questionData.input);
+    console.log('This is questionData in handleCodeSubmit: ', questionData);
   };
 
-  console.log(questionData);
+  console.log('This is questionData: ', questionData.output);
   return (
     <div>
       <form onSubmit={handleCodeSubmit}>
