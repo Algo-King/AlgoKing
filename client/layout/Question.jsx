@@ -12,7 +12,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
-
+import setAuthToken from "../utils/setAuthToken";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -23,10 +23,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Question = (query) => {
+const Question = (props) => {
   const classes = useStyles();
-
-  console.log("we are querying", query);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+  });
 
   const [questionData, setQuestionData] = useState({
     input: "",
@@ -40,7 +42,24 @@ const Question = (query) => {
     seconds: 0,
   });
 
+  const fetchData = async () => {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token); // global header
+    }
+
+    try {
+      const res = await axios.get("http://localhost:5000/api/auth");
+      setFormData(res.data);
+    } catch {
+      console.log("error");
+    }
+  };
+
+  // console.log(questionData);
+  // console.log(time);
+
   useEffect(() => {
+    fetchData();
     getData();
   }, []);
   // set the data
@@ -65,9 +84,10 @@ const Question = (query) => {
         <Grid item xs={8}>
           <Paper className={classes.paper}>
             <CodeWindow
+              name={formData.name}
+              time={time}
               setQuestionData={setQuestionData}
               questionData={questionData}
-              time={time}
             />
           </Paper>
         </Grid>

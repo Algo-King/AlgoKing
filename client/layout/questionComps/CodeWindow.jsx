@@ -43,8 +43,8 @@ const useStyles = makeStyles((theme) => ({
 
 const CodeWindow = (props) => {
   const classes = useStyles();
-  const { setQuestionData, questionData, time } = props;
-
+  const { setQuestionData, questionData, time, name } = props;
+  // console.log('name', name);
   const [codeWindowData, setCodeWindowData] = useState({
     name: "",
     problem: "",
@@ -100,75 +100,30 @@ const CodeWindow = (props) => {
   // ! code submit then redirect to the leaderboard, which happens after submitted
   const handleCodeSubmit = (e) => {
     e.preventDefault();
-    // let outputData = eval("(" + questionData.input + ")")();
-    // outputData = JSON.stringify(outputData);
-    // console.log("this is output ", outputData);
-    let passed = true;
-    const tests = {
-      test1: {
-        title: "Sum of 1 + 2",
-        input: "const first = 1; const second = 2;",
-        expectedOutput: "3",
-      },
-      test2: {
-        title: "Sum of 2 + 2",
-        input: "const first = 2; const second = 2;",
-        expectedOutput: "4",
-      },
-      callString: "sums(first, second)",
-    };
-    const testOutput = [];
-    for (let indTest in tests) {
-      if (indTest === "callString") break;
-      const testEnv = `
-      ${tests[indTest].input}
-      ${questionData.input}
-      ${tests.callString}
-      `;
-      if (eval(testEnv) == indTest.expectedOutput) {
-        testOutput.push(<div>{tests[indTest].title} : Passed!</div>);
-      } else {
-        console.log("failed");
-        passed = false;
-        testOutput.push(
-          <div>
-            {tests[indTest].title} : Failed /n Expected:{" "}
-            {tests[indTest].expectedOutput}/nReceived:{eval(testEnv)}
-          </div>
-        );
-      }
-    }
-    if (passed) console.log("YOU DID IT! YAY!"); // ADD IN PASSING FUNCTIONALITY HERE
-    // RENDER testOutput;
+    let outputData = eval("(" + questionData.input + ")")();
+    outputData = JSON.stringify(outputData);
+    console.log("this is output ", outputData);
+
     // todo: do test case checks here
+
     let consoleData = eval("(" + questionData.input + ")");
     console.log("this is console data in handleCodeSubmit", consoleData);
-    // setQuestionData({
-    //   ...questionData,
-    //   input: questionData.input,
-    //   output: outputData,
-    // });
+    setQuestionData({
+      ...questionData,
+      input: questionData.input,
+      output: outputData,
+    });
+    postData();
   };
 
-  // const handleCodeSubmit = (e) => {
-  //   e.preventDefault();
-  //   let outputData = eval("(" + questionData.input + ")")();
-  //   outputData = JSON.stringify(outputData);
-  //   console.log("this is output ", outputData);
-
-  //   // todo: do test case checks here
-
-  //   let consoleData = eval("(" + questionData.input + ")");
-  //   console.log("this is console data in handleCodeSubmit", consoleData);
-  //   setQuestionData({
-  //     ...questionData,
-  //     input: questionData.input,
-  //     output: outputData,
-  //   });
-
-  //   // create a post request if our test pass - axios post, name and score
-  // };
-
+  const postData = async () => {
+    let body = {
+      name: name,
+      // challengeName: questionData.name,
+      time: time.seconds,
+    };
+    await axios.post("/api/submissions", body);
+  };
   // console.log("This is questionData: ", questionData.output);
   return (
     <div className={classes.root}>
