@@ -20,8 +20,8 @@
 		"axios": "^0.20.0",
 		"bcrypt": "^5.0.0",
 		"bcryptjs": "^2.4.3",
-		"codemirror": "^5.57.0",
 		"classnames": "^2.2.6",
+		"codemirror": "^5.57.0",
 		"concurrently": "^5.3.0",
 		"config": "^3.3.1",
 		"cors": "^2.8.5",
@@ -34,13 +34,14 @@
 		"mongoose": "^5.10.3",
 		"nodemon": "^2.0.4",
 		"react": "^16.13.1",
+		"react-codemirror": "^1.0.0",
 		"react-dom": "^16.13.1",
 		"react-hot-loader": "^4.12.21",
 		"react-image-gallery": "^1.0.8",
 		"react-router-dom": "^5.2.0",
+		"react-slick": "^0.27.11",
 		"regenerator-runtime": "^0.13.7",
-		"sass": "^1.26.10",
-		"react-slick": "^0.27.11"
+		"sass": "^1.26.10"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.11.6",
