@@ -80,18 +80,30 @@ const CodeWindow = (props) => {
 
   const handleCodeRun = (e) => {
     e.preventDefault();
-    let outputData = eval("(" + questionData.input + ")")();
-    outputData = JSON.stringify(outputData);
-    console.log("this is output ", outputData);
+    // let outputData = eval("(" + questionData.input + ")")();
+    // outputData = JSON.stringify(outputData);
+    // console.log("this is output ", outputData);
 
-    let consoleData = eval("(" + questionData.input + ")");
-    console.log("this is console data in handleCodeSubmit", consoleData);
+    // let consoleData = eval("(" + questionData.input + ")");
+    // console.log("this is console data in handleCodeSubmit", consoleData);
+
+    console.log("==========in run code");
+    const outputString = questionData.input;
+    // console.log('props', this.props);
+    const regex = /console.log/gi;
+    const output = outputString.replace(regex, "outputArray.push");
+    console.log("output", output);
+    let outputArray = [];
+    eval(output);
+    console.log("outputArray", outputArray);
+    const renderArray = outputArray.map((e) => <div>{e}</div>);
+    console.log("renderArray", renderArray);
 
     // todo: do test case checks here
 
     setQuestionData({
       input: questionData.input,
-      output: outputData,
+      output: renderArray,
     });
   };
 
