@@ -1,13 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// Codemirror Styling
-// require('codemirror/lib/codemirror.css');
+import Output from "./Output.jsx";
 import 'codemirror/lib/codemirror.css';
-
-// Codemirror Languages
 import 'codemirror/mode/javascript/javascript';
-
-// Codemirror Themes
 import 'codemirror/mode/markdown/markdown';
 import 'codemirror/theme/blackboard.css';
 
@@ -29,6 +24,16 @@ class CodeWindow extends Component {
 
   state = {
     codeString: '',
+    outputString: ``,
+    // outputString: `
+    // let vari = 'happy';
+    // console.log(vari);
+    // console.log(1 + 1);
+    // console.log([1,2,3][0]);
+    // ['a','b','c'].forEach( e => (console.log(e)));
+    // // console.log(vari);
+    // // console.log(vari);
+    // `,
     show: false,
   };  
 
@@ -45,8 +50,9 @@ class CodeWindow extends Component {
   }
 
   handleRunCode = (e) => {
-    eval(this.state.codeString);
-    console.log('in run code')
+    console.log('==========in run code')
+    const outputString = this.state.codeString;
+    this.setState( { outputString })
   }
   
   handleCodeSubmit = (e) => {
@@ -54,8 +60,9 @@ class CodeWindow extends Component {
     console.log("next up, the log...");
     eval(this.state.codeString);
   }
+  render() {  
+    console.log("STATE", this.state.outputString);
 
-  render() {
     return (
       <div>
         <form onSubmit={this.handleCodeSubmit}>
@@ -67,10 +74,11 @@ class CodeWindow extends Component {
           </div>
           <div>
             <button>Reset Code</button>
-            <button>Run Code</button>
+            <button onClick={this.handleRunCode}>Run Code</button>
             <button>Submit</button>
           </div>
         </form>
+        <Output outputString={this.state.outputString}/>
       </div>
     );
   }

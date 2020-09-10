@@ -16,7 +16,6 @@ const Question = () => {
         <Prompt className="prompt" />
         <div className="codePlacement">
           <CodeWindow />
-          <Output />
         </div>
         <Results className="results" />
       </div>
