@@ -91,6 +91,7 @@ const CodeWindow = (props) => {
     console.log("renderArray", renderArray);
 
     setQuestionData({
+      ...questionData,
       input: questionData.input,
       output: renderArray,
     });
@@ -108,6 +109,7 @@ const CodeWindow = (props) => {
     let consoleData = eval("(" + questionData.input + ")");
     console.log("this is console data in handleCodeSubmit", consoleData);
     setQuestionData({
+      ...questionData,
       input: questionData.input,
       output: outputData,
     });

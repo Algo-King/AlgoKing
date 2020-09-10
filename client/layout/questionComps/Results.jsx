@@ -37,7 +37,7 @@ const Results = (props) => {
       <Grid item xs={12}>
         <Paper className={classes.paper}>
           <h3>
-            <b>Test Cases:</b>
+            <b>Test Results</b>
           </h3>
           <h4>
             <b>Test Case: This is an example title</b>
