@@ -107,14 +107,6 @@ export default function SectionHeaders(props, { ...rest }) {
                   )}
                 >
                   <Button block color="facebook" className={classes.button}>
-                    <Link
-                      to={{
-                        pathname: `/question/`,
-                        query: { thing: "fdsa" },
-                      }}
-                    >
-                      Home 2
-                    </Link>
                     <Link to="/question" style={{ color: "white" }}>
                       {"Start Now"}
                     </Link>
