@@ -32,7 +32,7 @@ export default function SectionBlogs({ ...rest }) {
 		const res = await axios.get(`/api/oldChallenges/all`);
 		setOldQuestion(res.data);
 	};
-	console.log(typeof oldQuestion[0].date);
+
 	const sortedArr = oldQuestion.sort(function (a, b) {
 		if (a.date < b.date) {
 			return 1;
