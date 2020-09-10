@@ -90,7 +90,8 @@ const CodeWindow = (props) => {
       </Button>
       <Grid item xs={12}>
         <Paper className={classes.paper}>
-          Put the output data here: {questionData.output}
+          <b>return output:</b>
+          {questionData.output}
         </Paper>
       </Grid>
       {/* create a box for vertical */}
