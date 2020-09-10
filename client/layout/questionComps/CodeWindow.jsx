@@ -75,22 +75,20 @@ const CodeWindow = (props) => {
 
   console.log(questionData);
   return (
-    <div>
+    <div className={classes.root}>
       <div className="codemirror">
         <CodeMirror onChange={updateCode} options={options} />
       </div>
-      <div className={classes.root}>
-        <Button variant="contained" onClick={handleResetCode}>
-          Reset
-        </Button>
-        {/* We need to figure this out */}
-        <Button variant="contained" color="secondary">
-          Run
-        </Button>
-        <Button variant="contained" color="primary" onClick={handleCodeSubmit}>
-          Submit
-        </Button>
-      </div>
+      <Button variant="contained" onClick={handleResetCode}>
+        Reset
+      </Button>
+      {/* We need to figure this out */}
+      <Button variant="contained" color="secondary">
+        Run
+      </Button>
+      <Button variant="contained" color="primary" onClick={handleCodeSubmit}>
+        Submit
+      </Button>
 
       {/* create a box for vertical */}
     </div>
