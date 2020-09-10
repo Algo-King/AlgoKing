@@ -30,7 +30,12 @@ const Question = () => {
     input: "",
     output: "",
     seconds: 0,
+    question: '',
+    tests: '',
   });
+
+  // make the axios request to get the question and all the tests
+
   return (
     <div className={classes.root}>
       <Grid container spacing={1}>

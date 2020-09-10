@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 // Codemirror Styling
 // require('codemirror/lib/codemirror.css');
 import "codemirror/lib/codemirror.css";
+import axios from "axios";
 
 // Codemirror Languages
 import "codemirror/mode/javascript/javascript";
@@ -44,6 +45,14 @@ const CodeWindow = (props) => {
   const classes = useStyles();
   const { setQuestionData, questionData } = props;
 
+  const [codeWindowData, setCodeWindowData] = useState({
+    name: "",
+    problem: "",
+    example1: "",
+    example2: "",
+    tests: "",
+  });
+
   const updateCode = (e) => {
     setQuestionData({
       input: e,
@@ -58,6 +67,17 @@ const CodeWindow = (props) => {
     });
   };
 
+  // Bring in questionData
+
+  useEffect(() => {
+    getData();
+  }, []);
+  const getData = async () => {
+    const res = await axios.get(`/api/challenges`);
+    setCodeWindowData(res.data);
+  };
+  console.log("Here is a CW Data: ", codeWindowData.tests.test1);
+
   const handleCodeRun = (e) => {
     e.preventDefault();
     let outputData = eval("(" + questionData.input + ")")();
@@ -65,7 +85,7 @@ const CodeWindow = (props) => {
     console.log("this is output ", outputData);
 
     let consoleData = eval("(" + questionData.input + ")");
-    console.log("this is console data ", consoleData);
+    console.log("this is console data in handleCodeSubmit", consoleData);
 
     // todo: do test case checks here
 
@@ -75,7 +95,7 @@ const CodeWindow = (props) => {
     });
   };
 
-  console.log(questionData);
+  console.log("This is questionData: ", questionData.output);
   return (
     <div className={classes.root}>
       <div className="codemirror">
