@@ -1,66 +1,76 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 // Codemirror Styling
-require('codemirror/lib/codemirror.css');
+// require('codemirror/lib/codemirror.css');
+import "codemirror/lib/codemirror.css";
 
 // Codemirror Languages
-require('codemirror/mode/javascript/javascript');
+import "codemirror/mode/javascript/javascript";
 
 // Codemirror Themes
-require('codemirror/mode/markdown/markdown');
-require('codemirror/theme/monokai.css');
-require('codemirror/theme/midnight.css');
-require('codemirror/theme/lesser-dark.css');
-require('codemirror/theme/solarized.css');
+import "codemirror/mode/markdown/markdown";
+import "codemirror/theme/blackboard.css";
+require("codemirror/addon/edit/closebrackets");
 
 // Codemirror Component
-const CodeMirror = require('react-codemirror');
+const CodeMirror = require("react-codemirror");
 const options = {
-    lineNumbers: true,
-    mode: 'sql',
-    theme: 'lesser-dark',
+  lineNumbers: true,
+  autoCloseBrackets: true,
+  mode: "javascript",
+  theme: "blackboard",
+};
+
+const CodeWindow = (props) => {
+  const { setQuestionData, questionData } = props;
+
+  const updateCode = (e) => {
+    setQuestionData({
+      input: e,
+    });
   };
 
-class CodeWindow extends Component {
-  constructor(props) {
-    super(props);
-    this.handleCodeSubmit = this.handleCodeSubmit.bind(this);
-    this.updateCode = this.updateCode.bind(this);
-  }
+  const handleResetCode = (e) => {
+    setQuestionData({
+      input: "",
+      output: "",
+    });
+  };
 
-  state = {
-    codeString: '',
-    show: false,
-  };  
-
-  updateCode = (e) => {
-    this.setState({
-      codeString : e,
-    })
-  }
-
-  handleCodeSubmit = (e) => {
+  const handleCodeSubmit = (e) => {
     e.preventDefault();
-    console.log("next up, the log...");
-    eval(this.state.codeString);
-  }
 
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.handleCodeSubmit}>
-          <div className="codemirror">
-            <CodeMirror
-              onChange={this.updateCode}
-              options={options}
-            />
-          </div>
-          <button>Submit</button>
-        </form>
-      </div>
-    );
-  }
-  
+    // var customJSfromServer = questionData.input;
+    // var evalValue = new Function(customJSfromServer)();
+    // console.log(evalValue); // should be "6";
+
+    // this gets the return values
+    let outputData = eval("(" + questionData.input + ")")();
+    console.log("this is output ", outputData);
+
+    let consoleData = eval("(" + questionData.input + ")");
+    console.log("this is console data ", consoleData);
+
+    setQuestionData({
+      input: questionData.input,
+      output: outputData,
+    });
+    // eval(questionData.input);
+  };
+
+  console.log(questionData);
+  return (
+    <div>
+      <form onSubmit={handleCodeSubmit}>
+        <div className="codemirror">
+          <CodeMirror onChange={updateCode} options={options} />
+        </div>
+        <button>Submit</button>
+        <button>Reset Code</button>
+        <button>Run Code</button>
+      </form>
+    </div>
+  );
 };
 
 export default CodeWindow;

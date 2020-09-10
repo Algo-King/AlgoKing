@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 // https://upmostly.com/tutorials/build-a-react-timer-component-using-hooks
 
-const Timer = () => {
+const Timer = (props) => {
+  const { questionData, setQuestionData } = props;
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(true);
 
