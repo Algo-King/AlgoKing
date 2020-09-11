@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import Divider from "@material-ui/core/Divider";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,20 +41,35 @@ const Results = (props) => {
           <h3>
             <b>Test Results</b>
           </h3>
-          <h4>
-            <b>Test Case: This is an example title</b>
-          </h4>
-          <h5>
+          <h6>
+            <b>Test Case 2: </b>
+          </h6>
+          <h6>
             <b>Test Input:</b>
             {testInput}
-          </h5>
-          <h5>
+          </h6>
+          <h6>
             <b>Your Output:</b>
-          </h5>
-          <h5>
+          </h6>
+          <h6>
             <b>Correct Output: </b>
             {correctOutput}
-          </h5>
+          </h6>
+          <Divider />
+          <h6>
+            <b>Test Case 2: </b>
+          </h6>
+          <h6>
+            <b>Test Input:</b>
+            {testInput}
+          </h6>
+          <h6>
+            <b>Your Output:</b>
+          </h6>
+          <h6>
+            <b>Correct Output: </b>
+            {correctOutput}
+          </h6>
         </Paper>
       </Grid>
     </div>
