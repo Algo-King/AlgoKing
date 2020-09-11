@@ -76,9 +76,9 @@ export default function SectionBlogs({ ...rest }) {
                 <GridContainer>
                   <GridItem xs={12} sm={5} md={5}>
                     <CardHeader image plain>
-                      <a href="#pablito" onClick={(e) => e.preventDefault()}>
+                      {/* <a href="#pablito" onClick={(e) => e.preventDefault()}>
                         <img src={cardBlog4} alt="..." />
-                      </a>
+                      </a> */}
                       <div
                         className={classes.coloredShadow}
                         style={{
@@ -91,14 +91,10 @@ export default function SectionBlogs({ ...rest }) {
                   <GridItem xs={12} sm={7} md={7}>
                     <h3 className={classes.cardTitle}>
                       <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                        When you are ready, hit start now
+                        1) Hit Start Now
                       </a>
                     </h3>
-                    <h4>
-                      Once you hit the start button, a timer starts. Your score
-                      is calculate by a combination of performance and time. The
-                      more times you hit run, the lower your score
-                    </h4>
+                    <h4>Once you hit the start button, a timer starts.</h4>
                   </GridItem>
                 </GridContainer>
               </Card>
@@ -107,19 +103,20 @@ export default function SectionBlogs({ ...rest }) {
                   <GridItem xs={12} sm={7} md={7}>
                     <h3 className={classes.cardTitle}>
                       <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                        Run your code to test with checks
+                        2) Run your code to test with checks
                       </a>
                     </h3>
                     <h4>
-                      Our specialized console istantly displays the values you
-                      return
+                      Check your output -- however, with a penalty. Submitting
+                      and running your code while it is incorrect will have a
+                      bad effect on your score
                     </h4>
                   </GridItem>
                   <GridItem xs={12} sm={5} md={5}>
                     <CardHeader image plain>
-                      <a href="#pablito" onClick={(e) => e.preventDefault()}>
+                      {/* <a href="#pablito" onClick={(e) => e.preventDefault()}>
                         <img src={office2} alt="..." />
-                      </a>
+                      </a> */}
                       <div
                         className={classes.coloredShadow}
                         style={{
@@ -135,9 +132,9 @@ export default function SectionBlogs({ ...rest }) {
                 <GridContainer>
                   <GridItem xs={12} sm={5} md={5}>
                     <CardHeader image plain>
-                      <a href="#pablito" onClick={(e) => e.preventDefault()}>
+                      {/* <a href="#pablito" onClick={(e) => e.preventDefault()}>
                         <img src={cardBlog4} alt="..." />
-                      </a>
+                      </a> */}
                       <div
                         className={classes.coloredShadow}
                         style={{
@@ -150,12 +147,12 @@ export default function SectionBlogs({ ...rest }) {
                   <GridItem xs={12} sm={7} md={7}>
                     <h3 className={classes.cardTitle}>
                       <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                        When you are ready, hit start now
+                        3) Submit and find your ranking
                       </a>
                     </h3>
                     <h4>
-                      When you are ready, hit the submit button. If your code
-                      passes all of our test cases, you can continue
+                      When you are ready, hit the submit button. You can then
+                      find your ranking in the leaderboard
                     </h4>
                   </GridItem>
                 </GridContainer>
