@@ -32,7 +32,7 @@ AlgoKing is a browser based IDE with time constraints and technical checking to 
 - Node.js
 - MongoDB
 
-<h2>Fully function programming environment</h2>
+<h2>Fully functioning programming environment</h2>
 <p align='center'>
 <img src='./client/assets/img/readme/CodingEnvironment.png' width=100%>
 </p>
