@@ -44,7 +44,7 @@ AlgoKing is a browser based IDE with time constraints and technical checking to 
 1. Clone the repo
 
 ```sh
-git clone https://github.com/anthonylin198/UTutor.git
+git clone https://github.com/Algo-King/AlgoKing.git
 ```
 
 2. Install NPM packages
