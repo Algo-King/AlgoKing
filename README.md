@@ -1,10 +1,10 @@
 <!-- PROJECT LOGO -->
 <br />
 
-  <h1 align="center">UTutor</h1>
+  <h1 align="center">AlgoKing</h1>
 
   <p align="center">
-    Full stack Marketplace Application for University Tutors
+    Browser-Based IDE simulating high pressure coding environments
   </p>
 </p>
 
