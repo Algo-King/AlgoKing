@@ -1,10 +1,10 @@
 <!-- PROJECT LOGO -->
 <br />
 
-  <h1 align="center">UTutor</h1>
+  <h1 align="center">AlgoKing</h1>
 
   <p align="center">
-    Full stack Marketplace Application for University Tutors
+    Browser-Based IDE simulating high pressure coding environments
   </p>
 </p>
 
@@ -32,7 +32,7 @@ AlgoKing is a browser based IDE with time constraints and technical checking to 
 - Node.js
 - MongoDB
 
-<h2>Fully function programming environment</h2>
+<h2>Fully functioning programming environment</h2>
 <p align='center'>
 <img src='./client/assets/img/readme/CodingEnvironment.png' width=100%>
 </p>
